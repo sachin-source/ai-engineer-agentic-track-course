@@ -77,3 +77,11 @@ print(answer)
 from IPython.display import Markdown, display
 
 display(Markdown(answer))
+
+messages = [{ role : 'user', message : 'what is 2+2?'}]
+response = openai.chat.completions.create(
+    model="gpt-4.1-nano",
+    messages=messages
+)
+
+answer = response.choices[0].message.content
