@@ -6,3 +6,20 @@ from dotenv import load_dotenv
 # If this returns false, see the next cell!
 
 load_dotenv(override=True)
+
+# Check the key - if you're not using OpenAI, check whichever key you're using! Ollama doesn't need a key.
+
+import os
+openai_api_key = os.getenv('OPENAI_API_KEY')
+
+if openai_api_key:
+    print(f"OpenAI API Key exists and begins {openai_api_key[:8]}")
+else:
+    print("OpenAI API Key not set - please head to the troubleshooting guide in the setup folder")
+    
+# And now - the all important import statement
+# If you get an import error - head over to troubleshooting in the Setup folder
+# Even for other LLM providers like Gemini, you still use this OpenAI import - see Guide 9 for why
+
+from openai import OpenAI
+
