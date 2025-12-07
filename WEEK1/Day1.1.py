@@ -29,3 +29,19 @@ from openai import OpenAI
 # If you're not using OpenAI, you just need to slightly modify this - precise instructions are in the AI APIs guide (guide 9)
 
 openai = OpenAI()
+
+# Create a list of messages in the familiar OpenAI format
+
+messages = [{"role": "user", "content": "What is 2+2?"}]
+
+# And now call it! Any problems, head to the troubleshooting guide
+# This uses GPT 4.1 nano, the incredibly cheap model
+# The APIs guide (guide 9) has exact instructions for using even cheaper or free alternatives to OpenAI
+# If you get a NameError, head to the guides folder (guide 6) to learn about NameErrors - always instantly fixable
+
+response = openai.chat.completions.create(
+    model="gpt-4.1-nano",
+    messages=messages
+)
+
+print(response.choices[0].message.content)
