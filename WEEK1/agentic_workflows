@@ -1,0 +1,9 @@
+1. PROMPT - CHAINING Design pattern
+Prompt chaining is a technique where we get the response from llm and then refeed to the llm.
+
+-----------         -----------       -----------       -----------      -----------        -----------       
+|         |         |         |       |         |       |         |      |         |        |         |
+|   in    | ----->  |   llm1  |  ---> |  Gate   | ----> |   llm2  | ---> |  llm3   |  --->  |   out   |
+|         |         |         |       | (Human) |       |         |      |         |        |         |
+-----------         -----------       -----------       -----------      -----------        -----------
+
