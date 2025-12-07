@@ -61,3 +61,15 @@ response = openai.chat.completions.create(
 question = response.choices[0].message.content
 
 print(question)
+
+# form a new messages list
+messages = [{"role": "user", "content": question}]
+# Ask it again
+
+response = openai.chat.completions.create(
+    model="gpt-4.1-mini",
+    messages=messages
+)
+
+answer = response.choices[0].message.content
+print(answer)
