@@ -23,3 +23,9 @@ else:
 
 from openai import OpenAI
 
+# And now we'll create an instance of the OpenAI class
+# If you're not sure what it means to create an instance of a class - head over to the guides folder (guide 6)!
+# If you get a NameError - head over to the guides folder (guide 6)to learn about NameErrors - always instantly fixable
+# If you're not using OpenAI, you just need to slightly modify this - precise instructions are in the AI APIs guide (guide 9)
+
+openai = OpenAI()
