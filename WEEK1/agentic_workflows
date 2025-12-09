@@ -7,6 +7,8 @@ Prompt chaining is a technique where we get the response from llm and then refee
 |         |         |         |       | (Human) |       |         |      |         |        |         |
 -----------         -----------       -----------       -----------      -----------        -----------
 
+======================================================================================================================
+
 2. Routing Design pattern
 Direct an input into a specialized subtask, ensuring separation of concerns.
 
@@ -22,3 +24,5 @@ Direct an input into a specialized subtask, ensuring separation of concerns.
                    |        |--------|
                    -------> |  llm3  |
                             |--------|
+
+======================================================================================================================
