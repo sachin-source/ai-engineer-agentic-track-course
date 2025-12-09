@@ -26,3 +26,19 @@ Direct an input into a specialized subtask, ensuring separation of concerns.
                             |--------|
 
 ======================================================================================================================
+
+3. Parellelization Design pattern
+Breaking down tasks and running multiple subtasks concurrently
+
+
+                            |--------|
+                    ------> |  llm1  | -------|
+                   |        |--------|        |
+--------------     |                          |   |------------|
+|            |  ---|        |--------|        |-->|            |
+| llm router |  --------->  |  llm2  | ---------->|   output   |
+|            |  ---|        |--------|        |-->|            |
+--------------     |                          |   |------------|
+                   |        |--------|        |
+                   -------> |  llm3  | -------|
+                            |--------|
