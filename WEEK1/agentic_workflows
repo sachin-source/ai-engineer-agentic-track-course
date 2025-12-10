@@ -60,3 +60,17 @@ Comlex tasks are broken down dynamically and combined
                      |        |--------|       |
                      -------> |  llm3  | ------|
                               |--------|
+
+======================================================================================================================
+
+5. Evaluator Optimizer Design pattern
+LLM output is validated by another
+
+
+-----------         -------------    solution     -------------         -----------
+|         |         |    LLM    |   ---------->   |    LLM    |         |         |
+|   in    |         | generator |                 | Evaluator | ------> |   out   |
+|         |         |           |   <----------   |           |         |         |
+-----------         -------------     rejected    -------------         -----------
+                                        with
+                                      feedback
