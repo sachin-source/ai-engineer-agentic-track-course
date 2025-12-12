@@ -140,3 +140,18 @@ together = ""
 for index, answer in enumerate(answers):
     together += f"# Response from competitor {index+1}\n\n"
     together += answer + "\n\n"
+
+judge = f"""You are judging a competition between {len(competitors)} competitors.
+Each model has been given this question:
+
+{question}
+
+Your job is to evaluate each response for clarity and strength of argument, and rank them in order of best to worst.
+Respond with JSON, and only JSON, with the following format:
+{{"results": ["best competitor number", "second best competitor number", "third best competitor number", ...]}}
+
+Here are the responses from each competitor:
+
+{together}
+
+Now respond with the JSON with the ranked order of the competitors, nothing else. Do not include markdown formatting or code blocks."""
