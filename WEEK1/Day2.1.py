@@ -45,3 +45,11 @@ else:
 request = "Please come up with a challenging, nuanced question that I can ask a number of LLMs to evaluate their intelligence. "
 request += "Answer only with the question, no explanation."
 messages = [{"role": "user", "content": request}]
+
+openai = OpenAI()
+response = openai.chat.completions.create(
+    model="gpt-5-mini",
+    messages=messages,
+)
+question = response.choices[0].message.content
+print(question)
