@@ -70,3 +70,15 @@ answer = response.choices[0].message.content
 display(Markdown(answer))
 competitors.append(model_name)
 answers.append(answer)
+
+# Anthropic has a slightly different API, and Max Tokens is required
+
+model_name = "claude-sonnet-4-5"
+
+claude = Anthropic()
+response = claude.messages.create(model=model_name, messages=messages, max_tokens=1000)
+answer = response.content[0].text
+
+display(Markdown(answer))
+competitors.append(model_name)
+answers.append(answer)
