@@ -106,3 +106,5 @@ def chat(message, history):
         print(evaluation.feedback)
         reply = rerun(reply, message, history, evaluation.feedback)       
     return reply
+
+gr.ChatInterface(chat, type="messages").launch()
