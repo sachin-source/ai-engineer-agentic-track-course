@@ -167,3 +167,11 @@ response = openai.chat.completions.create(
 )
 results = response.choices[0].message.content
 print(results)
+
+# OK let's turn this into results!
+
+results_dict = json.loads(results)
+ranks = results_dict["results"]
+for index, result in enumerate(ranks):
+    competitor = competitors[int(result)-1]
+    print(f"Rank {index+1}: {competitor}")
