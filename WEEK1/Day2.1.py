@@ -124,3 +124,12 @@ answer = response.choices[0].message.content
 display(Markdown(answer))
 competitors.append(model_name)
 answers.append(answer)
+
+# So where are we?
+
+print(competitors)
+print(answers)
+
+# It's nice to know how to use "zip"
+for competitor, answer in zip(competitors, answers):
+    print(f"Competitor: {competitor}\n\n{answer}")
