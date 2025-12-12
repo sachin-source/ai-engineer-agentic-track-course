@@ -92,3 +92,13 @@ answer = response.choices[0].message.content
 display(Markdown(answer))
 competitors.append(model_name)
 answers.append(answer)
+
+deepseek = OpenAI(api_key=deepseek_api_key, base_url="https://api.deepseek.com/v1")
+model_name = "deepseek-chat"
+
+response = deepseek.chat.completions.create(model=model_name, messages=messages)
+answer = response.choices[0].message.content
+
+display(Markdown(answer))
+competitors.append(model_name)
+answers.append(answer)
