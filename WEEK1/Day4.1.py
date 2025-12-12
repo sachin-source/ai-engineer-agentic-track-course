@@ -36,3 +36,11 @@ def chat(message, history):
     return response.choices[0].message.content
 
 gr.ChatInterface(chat, type="messages").launch()
+
+# Create a Pydantic model for the Evaluation
+
+from pydantic import BaseModel
+
+class Evaluation(BaseModel):
+    is_acceptable: bool
+    feedback: str
