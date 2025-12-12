@@ -53,3 +53,7 @@ response = openai.chat.completions.create(
 )
 question = response.choices[0].message.content
 print(question)
+
+competitors = []
+answers = []
+messages = [{"role": "user", "content": question}]
