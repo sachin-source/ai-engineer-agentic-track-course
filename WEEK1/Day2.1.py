@@ -41,3 +41,7 @@ if groq_api_key:
     print(f"Groq API Key exists and begins {groq_api_key[:4]}")
 else:
     print("Groq API Key not set (and this is optional)")
+
+request = "Please come up with a challenging, nuanced question that I can ask a number of LLMs to evaluate their intelligence. "
+request += "Answer only with the question, no explanation."
+messages = [{"role": "user", "content": request}]
