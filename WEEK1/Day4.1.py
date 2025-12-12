@@ -66,3 +66,9 @@ gemini = OpenAI(
     api_key=os.getenv("GOOGLE_API_KEY"), 
     base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
 )
+
+def evaluate(reply, message, history) -> Evaluation:
+
+    messages = [{"role": "system", "content": evaluator_system_prompt}] + [{"role": "user", "content": evaluator_user_prompt(reply, message, history)}]
+    response = gemini.beta.chat.completions.parse(model="gemini-2.0-flash", messages=messages, response_format=Evaluation)
+    return response.choices[0].message.parsed
