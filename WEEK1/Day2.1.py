@@ -57,3 +57,16 @@ print(question)
 competitors = []
 answers = []
 messages = [{"role": "user", "content": question}]
+
+# The API we know well
+# I've updated this with the latest model, but it can take some time because it likes to think!
+# Replace the model with gpt-4.1-mini if you'd prefer not to wait 1-2 mins
+
+model_name = "gpt-5-nano"
+
+response = openai.chat.completions.create(model=model_name, messages=messages)
+answer = response.choices[0].message.content
+
+display(Markdown(answer))
+competitors.append(model_name)
+answers.append(answer)
