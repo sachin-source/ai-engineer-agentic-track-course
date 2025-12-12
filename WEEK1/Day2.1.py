@@ -155,3 +155,5 @@ Here are the responses from each competitor:
 {together}
 
 Now respond with the JSON with the ranked order of the competitors, nothing else. Do not include markdown formatting or code blocks."""
+
+judge_messages = [{"role": "user", "content": judge}]
