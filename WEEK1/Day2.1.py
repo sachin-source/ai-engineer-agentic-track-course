@@ -157,3 +157,13 @@ Here are the responses from each competitor:
 Now respond with the JSON with the ranked order of the competitors, nothing else. Do not include markdown formatting or code blocks."""
 
 judge_messages = [{"role": "user", "content": judge}]
+
+# Judgement time!
+
+openai = OpenAI()
+response = openai.chat.completions.create(
+    model="gpt-5-mini",
+    messages=judge_messages,
+)
+results = response.choices[0].message.content
+print(results)
