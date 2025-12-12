@@ -6,3 +6,6 @@ from dotenv import load_dotenv
 from openai import OpenAI
 from anthropic import Anthropic
 from IPython.display import Markdown, display
+
+# Always remember to do this!
+load_dotenv(override=True)
