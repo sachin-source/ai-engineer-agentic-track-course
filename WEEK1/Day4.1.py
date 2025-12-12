@@ -72,3 +72,7 @@ def evaluate(reply, message, history) -> Evaluation:
     messages = [{"role": "system", "content": evaluator_system_prompt}] + [{"role": "user", "content": evaluator_user_prompt(reply, message, history)}]
     response = gemini.beta.chat.completions.parse(model="gemini-2.0-flash", messages=messages, response_format=Evaluation)
     return response.choices[0].message.parsed
+
+messages = [{"role": "system", "content": system_prompt}] + [{"role": "user", "content": "do you hold a patent?"}]
+response = openai.chat.completions.create(model="gpt-4o-mini", messages=messages)
+reply = response.choices[0].message.content
