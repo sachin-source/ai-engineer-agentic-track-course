@@ -53,3 +53,10 @@ The Agent has been provided with context on {name} in the form of their summary 
 
 evaluator_system_prompt += f"\n\n## Summary:\n{summary}\n\n## LinkedIn Profile:\n{linkedin}\n\n"
 evaluator_system_prompt += f"With this context, please evaluate the latest response, replying with whether the response is acceptable and your feedback."
+
+def evaluator_user_prompt(reply, message, history):
+    user_prompt = f"Here's the conversation between the User and the Agent: \n\n{history}\n\n"
+    user_prompt += f"Here's the latest message from the User: \n\n{message}\n\n"
+    user_prompt += f"Here's the latest response from the Agent: \n\n{reply}\n\n"
+    user_prompt += "Please evaluate the response, replying with whether it is acceptable and your feedback."
+    return user_prompt
