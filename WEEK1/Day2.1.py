@@ -133,3 +133,10 @@ print(answers)
 # It's nice to know how to use "zip"
 for competitor, answer in zip(competitors, answers):
     print(f"Competitor: {competitor}\n\n{answer}")
+
+# Let's bring this together - note the use of "enumerate"
+
+together = ""
+for index, answer in enumerate(answers):
+    together += f"# Response from competitor {index+1}\n\n"
+    together += answer + "\n\n"
