@@ -102,3 +102,15 @@ answer = response.choices[0].message.content
 display(Markdown(answer))
 competitors.append(model_name)
 answers.append(answer)
+
+# Updated with the latest Open Source model from OpenAI
+
+groq = OpenAI(api_key=groq_api_key, base_url="https://api.groq.com/openai/v1")
+model_name = "openai/gpt-oss-120b"
+
+response = groq.chat.completions.create(model=model_name, messages=messages)
+answer = response.choices[0].message.content
+
+display(Markdown(answer))
+competitors.append(model_name)
+answers.append(answer)
