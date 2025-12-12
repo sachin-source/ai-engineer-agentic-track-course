@@ -60,3 +60,9 @@ def evaluator_user_prompt(reply, message, history):
     user_prompt += f"Here's the latest response from the Agent: \n\n{reply}\n\n"
     user_prompt += "Please evaluate the response, replying with whether it is acceptable and your feedback."
     return user_prompt
+
+import os
+gemini = OpenAI(
+    api_key=os.getenv("GOOGLE_API_KEY"), 
+    base_url="https://generativelanguage.googleapis.com/v1beta/openai/"
+)
