@@ -34,3 +34,5 @@ def chat(message, history):
     messages = [{"role": "system", "content": system_prompt}] + history + [{"role": "user", "content": message}]
     response = openai.chat.completions.create(model="gpt-4o-mini", messages=messages)
     return response.choices[0].message.content
+
+gr.ChatInterface(chat, type="messages").launch()
