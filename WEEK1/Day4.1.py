@@ -14,3 +14,7 @@ for page in reader.pages:
     text = page.extract_text()
     if text:
         linkedin += text
+
+print(linkedin)
+with open("me/summary.txt", "r", encoding="utf-8") as f:
+    summary = f.read()
