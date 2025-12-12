@@ -82,3 +82,13 @@ answer = response.content[0].text
 display(Markdown(answer))
 competitors.append(model_name)
 answers.append(answer)
+
+gemini = OpenAI(api_key=google_api_key, base_url="https://generativelanguage.googleapis.com/v1beta/openai/")
+model_name = "gemini-2.5-flash"
+
+response = gemini.chat.completions.create(model=model_name, messages=messages)
+answer = response.choices[0].message.content
+
+display(Markdown(answer))
+competitors.append(model_name)
+answers.append(answer)
