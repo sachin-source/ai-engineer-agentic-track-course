@@ -76,3 +76,5 @@ def evaluate(reply, message, history) -> Evaluation:
 messages = [{"role": "system", "content": system_prompt}] + [{"role": "user", "content": "do you hold a patent?"}]
 response = openai.chat.completions.create(model="gpt-4o-mini", messages=messages)
 reply = response.choices[0].message.content
+
+evaluate(reply, "do you hold a patent?", messages[:1])
