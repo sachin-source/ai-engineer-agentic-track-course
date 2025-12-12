@@ -114,3 +114,13 @@ answer = response.choices[0].message.content
 display(Markdown(answer))
 competitors.append(model_name)
 answers.append(answer)
+
+ollama = OpenAI(base_url='http://localhost:11434/v1', api_key='ollama')
+model_name = "llama3.2"
+
+response = ollama.chat.completions.create(model=model_name, messages=messages)
+answer = response.choices[0].message.content
+
+display(Markdown(answer))
+competitors.append(model_name)
+answers.append(answer)
