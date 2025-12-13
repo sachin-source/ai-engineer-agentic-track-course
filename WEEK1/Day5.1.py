@@ -39,3 +39,7 @@ push("HEY!!")
 def record_user_details(email, name="Name not provided", notes="not provided"):
     push(f"Recording interest from {name} with email {email} and notes {notes}")
     return {"recorded": "ok"}
+
+def record_unknown_question(question):
+    push(f"Recording {question} asked that I couldn't answer")
+    return {"recorded": "ok"}
