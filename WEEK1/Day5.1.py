@@ -28,3 +28,8 @@ if pushover_token:
     print(f"Pushover token found and starts with {pushover_token[0]}")
 else:
     print("Pushover token not found")
+
+def push(message):
+    print(f"Push: {message}")
+    payload = {"user": pushover_user, "token": pushover_token, "message": message}
+    requests.post(pushover_url, data=payload)
