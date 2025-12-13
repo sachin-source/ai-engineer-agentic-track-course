@@ -7,3 +7,8 @@ import os
 import requests
 from pypdf import PdfReader
 import gradio as gr
+
+# The usual start
+
+load_dotenv(override=True)
+openai = OpenAI()
