@@ -35,3 +35,7 @@ def push(message):
     requests.post(pushover_url, data=payload)
 
 push("HEY!!")
+
+def record_user_details(email, name="Name not provided", notes="not provided"):
+    push(f"Recording interest from {name} with email {email} and notes {notes}")
+    return {"recorded": "ok"}
