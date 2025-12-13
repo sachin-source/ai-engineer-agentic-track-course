@@ -87,3 +87,22 @@ record_unknown_question_json = {
 
 tools = [{"type": "function", "function": record_user_details_json},
         {"type": "function", "function": record_unknown_question_json}]
+
+# This function can take a list of tool calls, and run them. This is the IF statement!!
+
+def handle_tool_calls(tool_calls):
+    results = []
+    for tool_call in tool_calls:
+        tool_name = tool_call.function.name
+        arguments = json.loads(tool_call.function.arguments)
+        print(f"Tool called: {tool_name}", flush=True)
+
+        # THE BIG IF STATEMENT!!!
+
+        if tool_name == "record_user_details":
+            result = record_user_details(**arguments)
+        elif tool_name == "record_unknown_question":
+            result = record_unknown_question(**arguments)
+
+        results.append({"role": "tool","content": json.dumps(result),"tool_call_id": tool_call.id})
+    return results
