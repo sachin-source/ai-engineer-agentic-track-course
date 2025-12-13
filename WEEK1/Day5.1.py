@@ -33,3 +33,5 @@ def push(message):
     print(f"Push: {message}")
     payload = {"user": pushover_user, "token": pushover_token, "message": message}
     requests.post(pushover_url, data=payload)
+
+push("HEY!!")
