@@ -121,3 +121,15 @@ def handle_tool_calls(tool_calls):
         result = tool(**arguments) if tool else {}
         results.append({"role": "tool","content": json.dumps(result),"tool_call_id": tool_call.id})
     return results
+
+reader = PdfReader("me/linkedin.pdf")
+linkedin = ""
+for page in reader.pages:
+    text = page.extract_text()
+    if text:
+        linkedin += text
+
+with open("me/summary.txt", "r", encoding="utf-8") as f:
+    summary = f.read()
+
+name = "Ed Donner"
