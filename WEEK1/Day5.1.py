@@ -144,3 +144,26 @@ If the user is engaging in discussion, try to steer them towards getting in touc
 
 system_prompt += f"\n\n## Summary:\n{summary}\n\n## LinkedIn Profile:\n{linkedin}\n\n"
 system_prompt += f"With this context, please chat with the user, always staying in character as {name}."
+
+def chat(message, history):
+    messages = [{"role": "system", "content": system_prompt}] + history + [{"role": "user", "content": message}]
+    done = False
+    while not done:
+
+        # This is the call to the LLM - see that we pass in the tools json
+
+        response = openai.chat.completions.create(model="gpt-4o-mini", messages=messages, tools=tools)
+
+        finish_reason = response.choices[0].finish_reason
+        
+        # If the LLM wants to call a tool, we do that!
+         
+        if finish_reason=="tool_calls":
+            message = response.choices[0].message
+            tool_calls = message.tool_calls
+            results = handle_tool_calls(tool_calls)
+            messages.append(message)
+            messages.extend(results)
+        else:
+            done = True
+    return response.choices[0].message.content
