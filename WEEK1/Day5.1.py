@@ -106,3 +106,5 @@ def handle_tool_calls(tool_calls):
 
         results.append({"role": "tool","content": json.dumps(result),"tool_call_id": tool_call.id})
     return results
+
+# globals()["record_unknown_question"]("this is a really hard question")
