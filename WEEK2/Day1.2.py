@@ -15,3 +15,6 @@ async def tell_joke():
     with trace("Telling a joke"):
         result = await Runner.run(agent, "Tell a joke about Autonomous AI Agents")
         print(result.final_output)
+
+import asyncio
+asyncio.run(tell_joke())
