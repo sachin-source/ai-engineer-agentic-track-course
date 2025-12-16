@@ -67,3 +67,14 @@ with trace("Selection from sales people"):
     best = await Runner.run(sales_picker, emails)
 
     print(f"Best sales email:\n{best.final_output}")
+
+
+def send_email(body: str):
+    """ Send out an email with the given body to all sales prospects """
+    sg = sendgrid.SendGridAPIClient(api_key=os.environ.get('SENDGRID_API_KEY'))
+    from_email = Email("ed@edwarddonner.com")  # Change to your verified sender
+    to_email = To("ed.donner@gmail.com")  # Change to your recipient
+    content = Content("text/plain", body)
+    mail = Mail(from_email, to_email, "Sales email", content).get()
+    sg.client.mail.send.post(request_body=mail)
+    return {"status": "success"}
