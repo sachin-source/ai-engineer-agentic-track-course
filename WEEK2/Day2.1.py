@@ -68,7 +68,7 @@ with trace("Selection from sales people"):
 
     print(f"Best sales email:\n{best.final_output}")
 
-
+@function_tool
 def send_email(body: str):
     """ Send out an email with the given body to all sales prospects """
     sg = sendgrid.SendGridAPIClient(api_key=os.environ.get('SENDGRID_API_KEY'))
