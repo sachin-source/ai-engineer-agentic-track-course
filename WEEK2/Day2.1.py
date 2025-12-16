@@ -38,3 +38,8 @@ sales_agent3 = Agent(
         instructions=instructions3,
         model="gpt-4o-mini"
 )
+
+result = Runner.run_streamed(sales_agent1, input="Write a cold sales email")
+async for event in result.stream_events():
+    if event.type == "raw_response_event" and isinstance(event.data, ResponseTextDeltaEvent):
+        print(event.data.delta, end="", flush=True)
