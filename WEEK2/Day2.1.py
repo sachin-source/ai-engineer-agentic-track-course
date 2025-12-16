@@ -43,3 +43,11 @@ result = Runner.run_streamed(sales_agent1, input="Write a cold sales email")
 async for event in result.stream_events():
     if event.type == "raw_response_event" and isinstance(event.data, ResponseTextDeltaEvent):
         print(event.data.delta, end="", flush=True)
+
+sales_picker = Agent(
+    name="sales_picker",
+    instructions="You pick the best cold sales email from the given options. \
+Imagine you are a customer and pick the one you are most likely to respond to. \
+Do not give an explanation; reply with the selected email only.",
+    model="gpt-4o-mini"
+)
