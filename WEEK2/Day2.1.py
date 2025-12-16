@@ -121,3 +121,6 @@ and you need to convert it to an HTML email body with simple, clear, compelling 
 
 subject_writer = Agent(name="Email subject writer", instructions=subject_instructions, model="gpt-4o-mini")
 subject_tool = subject_writer.as_tool(tool_name="subject_writer", tool_description="Write a subject for a cold sales email")
+
+html_converter = Agent(name="HTML email body converter", instructions=html_instructions, model="gpt-4o-mini")
+html_tool = html_converter.as_tool(tool_name="html_converter",tool_description="Convert a text email body to an HTML email body")
