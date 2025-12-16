@@ -78,3 +78,5 @@ def send_email(body: str):
     mail = Mail(from_email, to_email, "Sales email", content).get()
     sg.client.mail.send.post(request_body=mail)
     return {"status": "success"}
+
+tool1 = sales_agent1.as_tool(tool_name="sales_agent1", tool_description="Write a cold sales email")
