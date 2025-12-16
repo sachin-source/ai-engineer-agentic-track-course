@@ -7,3 +7,4 @@ import os
 from sendgrid.helpers.mail import Mail, Email, To, Content
 import asyncio
 
+load_dotenv(override=True)
