@@ -102,3 +102,10 @@ Crucial Rules:
 - You must use the sales agent tools to generate the drafts — do not write them yourself.
 - You must send ONE email using the send_email tool — never more than one.
 """
+
+sales_manager = Agent(name="Sales Manager", instructions=instructions, tools=tools, model="gpt-4o-mini")
+
+message = "Send a cold sales email addressed to 'Dear CEO'"
+
+with trace("Sales manager"):
+    result = await Runner.run(sales_manager, message)
