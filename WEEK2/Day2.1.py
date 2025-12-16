@@ -125,6 +125,7 @@ subject_tool = subject_writer.as_tool(tool_name="subject_writer", tool_descripti
 html_converter = Agent(name="HTML email body converter", instructions=html_instructions, model="gpt-4o-mini")
 html_tool = html_converter.as_tool(tool_name="html_converter",tool_description="Convert a text email body to an HTML email body")
 
+@function_tool
 def send_html_email(subject: str, html_body: str) -> Dict[str, str]:
     """ Send out an email with the given subject and HTML body to all sales prospects """
     sg = sendgrid.SendGridAPIClient(api_key=os.environ.get('SENDGRID_API_KEY'))
