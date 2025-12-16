@@ -137,3 +137,7 @@ def send_html_email(subject: str, html_body: str) -> Dict[str, str]:
     return {"status": "success"}
 
 tools = [subject_tool, html_tool, send_html_email]
+
+instructions ="You are an email formatter and sender. You receive the body of an email to be sent. \
+You first use the subject_writer tool to write a subject for the email, then use the html_converter tool to convert the body to HTML. \
+Finally, you use the send_html_email tool to send the email with the subject and HTML body."
