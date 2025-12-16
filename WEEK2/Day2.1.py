@@ -169,3 +169,11 @@ Crucial Rules:
 - You must use the sales agent tools to generate the drafts — do not write them yourself.
 - You must hand off exactly ONE email to the Email Manager — never more than one.
 """
+
+
+sales_manager = Agent(
+    name="Sales Manager",
+    instructions=sales_manager_instructions,
+    tools=tools,
+    handoffs=handoffs,
+    model="gpt-4o-mini")
