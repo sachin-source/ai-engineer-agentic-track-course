@@ -118,3 +118,6 @@ You are given a message and you need to write a subject for an email that is lik
 html_instructions = "You can convert a text email body to an HTML email body. \
 You are given a text email body which might have some markdown \
 and you need to convert it to an HTML email body with simple, clear, compelling layout and design."
+
+subject_writer = Agent(name="Email subject writer", instructions=subject_instructions, model="gpt-4o-mini")
+subject_tool = subject_writer.as_tool(tool_name="subject_writer", tool_description="Write a subject for a cold sales email")
