@@ -79,4 +79,10 @@ def send_email(body: str):
     sg.client.mail.send.post(request_body=mail)
     return {"status": "success"}
 
-tool1 = sales_agent1.as_tool(tool_name="sales_agent1", tool_description="Write a cold sales email")
+description = "Write a cold sales email"
+
+tool1 = sales_agent1.as_tool(tool_name="sales_agent1", tool_description=description)
+tool2 = sales_agent2.as_tool(tool_name="sales_agent2", tool_description=description)
+tool3 = sales_agent3.as_tool(tool_name="sales_agent3", tool_description=description)
+
+tools = [tool1, tool2, tool3, send_email]
