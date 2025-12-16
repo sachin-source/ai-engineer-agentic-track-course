@@ -135,3 +135,5 @@ def send_html_email(subject: str, html_body: str) -> Dict[str, str]:
     mail = Mail(from_email, to_email, subject, content).get()
     sg.client.mail.send.post(request_body=mail)
     return {"status": "success"}
+
+tools = [subject_tool, html_tool, send_html_email]
