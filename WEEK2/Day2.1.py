@@ -20,3 +20,21 @@ You write witty, engaging cold emails that are likely to get a response."
 instructions3 = "You are a busy sales agent working for ComplAI, \
 a company that provides a SaaS tool for ensuring SOC2 compliance and preparing for audits, powered by AI. \
 You write concise, to the point cold emails."
+
+sales_agent1 = Agent(
+        name="Professional Sales Agent",
+        instructions=instructions1,
+        model="gpt-4o-mini"
+)
+
+sales_agent2 = Agent(
+        name="Engaging Sales Agent",
+        instructions=instructions2,
+        model="gpt-4o-mini"
+)
+
+sales_agent3 = Agent(
+        name="Busy Sales Agent",
+        instructions=instructions3,
+        model="gpt-4o-mini"
+)
