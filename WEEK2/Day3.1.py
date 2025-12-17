@@ -127,3 +127,15 @@ Crucial Rules:
 - You must hand off exactly ONE email to the Email Manager — never more than one.
 """
 
+
+sales_manager = Agent(
+    name="Sales Manager",
+    instructions=sales_manager_instructions,
+    tools=tools,
+    handoffs=handoffs,
+    model="gpt-4o-mini")
+
+message = "Send out a cold sales email addressed to Dear CEO from Alice"
+
+with trace("Automated SDR"):
+    result = await Runner.run(sales_manager, message)
