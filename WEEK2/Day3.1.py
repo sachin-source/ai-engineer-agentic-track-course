@@ -107,3 +107,6 @@ emailer_agent = Agent(
     tools=email_tools,
     model="gpt-4o-mini",
     handoff_description="Convert an email to HTML and send it")
+
+tools = [tool1, tool2, tool3]
+handoffs = [emailer_agent]
