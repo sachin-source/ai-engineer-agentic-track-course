@@ -93,3 +93,6 @@ subject_tool = subject_writer.as_tool(tool_name="subject_writer", tool_descripti
 
 html_converter = Agent(name="HTML email body converter", instructions=html_instructions, model="gpt-4o-mini")
 html_tool = html_converter.as_tool(tool_name="html_converter",tool_description="Convert a text email body to an HTML email body")
+
+email_tools = [subject_tool, html_tool, send_html_email]
+
