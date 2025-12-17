@@ -80,3 +80,10 @@ def send_html_email(subject: str, html_body: str) -> Dict[str, str]:
     mail = Mail(from_email, to_email, subject, content).get()
     sg.client.mail.send.post(request_body=mail)
     return {"status": "success"}
+
+subject_instructions = "You can write a subject for a cold sales email. \
+You are given a message and you need to write a subject for an email that is likely to get a response."
+
+html_instructions = "You can convert a text email body to an HTML email body. \
+You are given a text email body which might have some markdown \
+and you need to convert it to an HTML email body with simple, clear, compelling layout and design."
