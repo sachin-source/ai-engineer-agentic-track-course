@@ -6,3 +6,5 @@ import sendgrid
 import os
 from sendgrid.helpers.mail import Mail, Email, To, Content
 from pydantic import BaseModel
+
+load_dotenv(override=True)
