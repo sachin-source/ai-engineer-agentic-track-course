@@ -165,3 +165,9 @@ careful_sales_manager = Agent(
     model="gpt-4o-mini",
     input_guardrails=[guardrail_against_name]
     )
+
+
+message = "Send out a cold sales email addressed to Dear CEO from Alice"
+
+with trace("Protected Automated SDR"):
+    result = await Runner.run(careful_sales_manager, message)
