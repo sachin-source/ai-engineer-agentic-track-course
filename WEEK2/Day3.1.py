@@ -59,3 +59,7 @@ groq_client = AsyncOpenAI(base_url=GROQ_BASE_URL, api_key=groq_api_key)
 deepseek_model = OpenAIChatCompletionsModel(model="deepseek-chat", openai_client=deepseek_client)
 gemini_model = OpenAIChatCompletionsModel(model="gemini-2.0-flash", openai_client=gemini_client)
 llama3_3_model = OpenAIChatCompletionsModel(model="llama-3.3-70b-versatile", openai_client=groq_client)
+
+sales_agent1 = Agent(name="DeepSeek Sales Agent", instructions=instructions1, model=deepseek_model)
+sales_agent2 =  Agent(name="Gemini Sales Agent", instructions=instructions2, model=gemini_model)
+sales_agent3  = Agent(name="Llama3.3 Sales Agent",instructions=instructions3,model=llama3_3_model)
