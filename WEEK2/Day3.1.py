@@ -139,3 +139,7 @@ message = "Send out a cold sales email addressed to Dear CEO from Alice"
 
 with trace("Automated SDR"):
     result = await Runner.run(sales_manager, message)
+    
+class NameCheckOutput(BaseModel):
+    is_name_in_message: bool
+    name: str
