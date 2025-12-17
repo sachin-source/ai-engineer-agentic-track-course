@@ -70,7 +70,7 @@ tool1 = sales_agent1.as_tool(tool_name="sales_agent1", tool_description=descript
 tool2 = sales_agent2.as_tool(tool_name="sales_agent2", tool_description=description)
 tool3 = sales_agent3.as_tool(tool_name="sales_agent3", tool_description=description)
 
-
+@function_tool
 def send_html_email(subject: str, html_body: str) -> Dict[str, str]:
     """ Send out an email with the given subject and HTML body to all sales prospects """
     sg = sendgrid.SendGridAPIClient(api_key=os.environ.get('SENDGRID_API_KEY'))
