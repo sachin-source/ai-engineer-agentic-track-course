@@ -63,3 +63,9 @@ llama3_3_model = OpenAIChatCompletionsModel(model="llama-3.3-70b-versatile", ope
 sales_agent1 = Agent(name="DeepSeek Sales Agent", instructions=instructions1, model=deepseek_model)
 sales_agent2 =  Agent(name="Gemini Sales Agent", instructions=instructions2, model=gemini_model)
 sales_agent3  = Agent(name="Llama3.3 Sales Agent",instructions=instructions3,model=llama3_3_model)
+
+description = "Write a cold sales email"
+
+tool1 = sales_agent1.as_tool(tool_name="sales_agent1", tool_description=description)
+tool2 = sales_agent2.as_tool(tool_name="sales_agent2", tool_description=description)
+tool3 = sales_agent3.as_tool(tool_name="sales_agent3", tool_description=description)
