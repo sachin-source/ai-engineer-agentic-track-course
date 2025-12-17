@@ -151,6 +151,7 @@ guardrail_agent = Agent(
     model="gpt-4o-mini"
 )
 
+@input_guardrail
 async def guardrail_against_name(ctx, agent, message):
     result = await Runner.run(guardrail_agent, message, context=ctx.context)
     is_name_in_message = result.final_output.is_name_in_message
