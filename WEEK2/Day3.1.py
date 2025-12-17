@@ -150,3 +150,8 @@ guardrail_agent = Agent(
     output_type=NameCheckOutput,
     model="gpt-4o-mini"
 )
+
+async def guardrail_against_name(ctx, agent, message):
+    result = await Runner.run(guardrail_agent, message, context=ctx.context)
+    is_name_in_message = result.final_output.is_name_in_message
+    return GuardrailFunctionOutput(output_info={"found_name": result.final_output},tripwire_triggered=is_name_in_message)
