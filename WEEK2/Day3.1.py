@@ -49,3 +49,8 @@ You write concise, to the point cold emails."
 GEMINI_BASE_URL = "https://generativelanguage.googleapis.com/v1beta/openai/"
 DEEPSEEK_BASE_URL = "https://api.deepseek.com/v1"
 GROQ_BASE_URL = "https://api.groq.com/openai/v1"
+
+
+deepseek_client = AsyncOpenAI(base_url=DEEPSEEK_BASE_URL, api_key=deepseek_api_key)
+gemini_client = AsyncOpenAI(base_url=GEMINI_BASE_URL, api_key=google_api_key)
+groq_client = AsyncOpenAI(base_url=GROQ_BASE_URL, api_key=groq_api_key)
