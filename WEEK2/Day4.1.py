@@ -129,3 +129,9 @@ async def perform_searches(search_plan: WebSearchPlan):
     results = await asyncio.gather(*tasks)
     print("Finished searching")
     return results
+
+async def search(item: WebSearchItem):
+    """ Use the search agent to run a web search for each item in the search plan """
+    input = f"Search term: {item.query}\nReason for searching: {item.reason}"
+    result = await Runner.run(search_agent, input)
+    return result.final_output
