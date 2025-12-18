@@ -8,3 +8,5 @@ import os
 from sendgrid.helpers.mail import Mail, Email, To, Content
 from typing import Dict
 from IPython.display import display, Markdown
+
+load_dotenv(override=True)
