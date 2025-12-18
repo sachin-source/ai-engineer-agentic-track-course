@@ -24,3 +24,10 @@ search_agent = Agent(
     model="gpt-4o-mini",
     model_settings=ModelSettings(tool_choice="required"),
 )
+
+message = "Latest AI Agent frameworks in 2025"
+
+with trace("Search"):
+    result = await Runner.run(search_agent, message)
+
+display(Markdown(result.final_output))
