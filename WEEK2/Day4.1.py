@@ -114,3 +114,10 @@ writer_agent = Agent(
     model="gpt-4o-mini",
     output_type=ReportData,
 )
+
+async def plan_searches(query: str):
+    """ Use the planner_agent to plan which searches to run for the query """
+    print("Planning searches...")
+    result = await Runner.run(planner_agent, f"Query: {query}")
+    print(f"Will perform {len(result.final_output.searches)} searches")
+    return result.final_output
