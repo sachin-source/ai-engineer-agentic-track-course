@@ -31,3 +31,8 @@ with trace("Search"):
     result = await Runner.run(search_agent, message)
 
 display(Markdown(result.final_output))
+
+# Done with Agent1 : Search agent.
+# Now, we will start Planner agent
+
+HOW_MANY_SEARCHES = 3
