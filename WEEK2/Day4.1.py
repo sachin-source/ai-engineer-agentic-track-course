@@ -100,3 +100,10 @@ INSTRUCTIONS = (
     "The final output should be in markdown format, and it should be lengthy and detailed. Aim "
     "for 5-10 pages of content, at least 1000 words."
 )
+
+class ReportData(BaseModel):
+    short_summary: str = Field(description="A short 2-3 sentence summary of the findings.")
+
+    markdown_report: str = Field(description="The final report")
+
+    follow_up_questions: list[str] = Field(description="Suggested topics to research further")
