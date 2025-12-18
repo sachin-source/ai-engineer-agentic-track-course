@@ -150,3 +150,13 @@ async def send_email(report: ReportData):
     result = await Runner.run(email_agent, report.markdown_report)
     print("Email sent")
     return report
+
+query ="Latest AI Agent frameworks in 2025"
+
+with trace("Research trace"):
+    print("Starting research...")
+    search_plan = await plan_searches(query)
+    search_results = await perform_searches(search_plan)
+    report = await write_report(query, search_results)
+    await send_email(report)  
+    print("Hooray!")
