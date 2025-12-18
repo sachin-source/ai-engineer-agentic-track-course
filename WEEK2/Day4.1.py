@@ -50,3 +50,10 @@ class WebSearchItem(BaseModel):
 
 class WebSearchPlan(BaseModel):
     searches: list[WebSearchItem] = Field(description="A list of web searches to perform to best answer the query.")
+
+planner_agent = Agent(
+    name="PlannerAgent",
+    instructions=INSTRUCTIONS,
+    model="gpt-4o-mini",
+    output_type=WebSearchPlan,
+)
