@@ -16,3 +16,11 @@ produce a concise summary of the results. The summary must 2-3 paragraphs and le
 words. Capture the main points. Write succintly, no need to have complete sentences or good \
 grammar. This will be consumed by someone synthesizing a report, so it's vital you capture the \
 essence and ignore any fluff. Do not include any additional commentary other than the summary itself."
+
+search_agent = Agent(
+    name="Search agent",
+    instructions=INSTRUCTIONS,
+    tools=[WebSearchTool(search_context_size="low")],
+    model="gpt-4o-mini",
+    model_settings=ModelSettings(tool_choice="required"),
+)
