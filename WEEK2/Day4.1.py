@@ -63,3 +63,17 @@ message = "Latest AI Agent frameworks in 2025"
 with trace("Search"):
     result = await Runner.run(planner_agent, message)
     print(result.final_output)
+
+# Done with Planner agent
+# Now, we will start Email agent
+
+
+def send_email(subject: str, html_body: str) -> Dict[str, str]:
+    """ Send out an email with the given subject and HTML body """
+    sg = sendgrid.SendGridAPIClient(api_key=os.environ.get('SENDGRID_API_KEY'))
+    from_email = Email("ed@edwarddonner.com") # Change this to your verified email
+    to_email = To("ed.donner@gmail.com") # Change this to your email
+    content = Content("text/html", html_body)
+    mail = Mail(from_email, to_email, subject, content).get()
+    sg.client.mail.send.post(request_body=mail)
+    return "success"
