@@ -135,3 +135,11 @@ async def search(item: WebSearchItem):
     input = f"Search term: {item.query}\nReason for searching: {item.reason}"
     result = await Runner.run(search_agent, input)
     return result.final_output
+
+async def write_report(query: str, search_results: list[str]):
+    """ Use the writer agent to write a report based on the search results"""
+    print("Thinking about report...")
+    input = f"Original query: {query}\nSummarized search results: {search_results}"
+    result = await Runner.run(writer_agent, input)
+    print("Finished writing report")
+    return result.final_output
