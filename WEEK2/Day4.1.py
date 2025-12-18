@@ -121,3 +121,11 @@ async def plan_searches(query: str):
     result = await Runner.run(planner_agent, f"Query: {query}")
     print(f"Will perform {len(result.final_output.searches)} searches")
     return result.final_output
+
+async def perform_searches(search_plan: WebSearchPlan):
+    """ Call search() for each item in the search plan """
+    print("Searching...")
+    tasks = [asyncio.create_task(search(item)) for item in search_plan.searches]
+    results = await asyncio.gather(*tasks)
+    print("Finished searching")
+    return results
