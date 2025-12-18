@@ -57,3 +57,9 @@ planner_agent = Agent(
     model="gpt-4o-mini",
     output_type=WebSearchPlan,
 )
+
+message = "Latest AI Agent frameworks in 2025"
+
+with trace("Search"):
+    result = await Runner.run(planner_agent, message)
+    print(result.final_output)
