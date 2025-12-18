@@ -143,3 +143,10 @@ async def write_report(query: str, search_results: list[str]):
     result = await Runner.run(writer_agent, input)
     print("Finished writing report")
     return result.final_output
+
+async def send_email(report: ReportData):
+    """ Use the email agent to send an email with the report """
+    print("Writing email...")
+    result = await Runner.run(email_agent, report.markdown_report)
+    print("Email sent")
+    return report
