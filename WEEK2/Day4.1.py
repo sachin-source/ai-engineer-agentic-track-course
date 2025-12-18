@@ -67,7 +67,7 @@ with trace("Search"):
 # Done with Planner agent
 # Now, we will start Email agent
 
-
+@function_tool
 def send_email(subject: str, html_body: str) -> Dict[str, str]:
     """ Send out an email with the given subject and HTML body """
     sg = sendgrid.SendGridAPIClient(api_key=os.environ.get('SENDGRID_API_KEY'))
@@ -77,3 +77,4 @@ def send_email(subject: str, html_body: str) -> Dict[str, str]:
     mail = Mail(from_email, to_email, subject, content).get()
     sg.client.mail.send.post(request_body=mail)
     return "success"
+
