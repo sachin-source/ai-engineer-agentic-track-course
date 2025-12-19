@@ -45,3 +45,16 @@ class ResearchManager:
             print(f"Searching... {num_completed}/{len(tasks)} completed")
         print("Finished searching")
         return results
+    
+    
+    async def write_report(self, query: str, search_results: list[str]) -> ReportData:
+        """ Write the report for the query """
+        print("Thinking about report...")
+        input = f"Original query: {query}\nSummarized search results: {search_results}"
+        result = await Runner.run(
+            writer_agent,
+            input,
+        )
+
+        print("Finished writing report")
+        return result.final_output_as(ReportData)
