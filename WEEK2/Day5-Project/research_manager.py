@@ -17,6 +17,7 @@ class ResearchManager:
         print(f"Will perform {len(result.final_output.searches)} searches")
         return result.final_output_as(WebSearchPlan)
     
+    
     async def search(self, item: WebSearchItem) -> str | None:
         """ Perform a search for the query """
         input = f"Search term: {item.query}\nReason for searching: {item.reason}"
@@ -28,3 +29,19 @@ class ResearchManager:
             return str(result.final_output)
         except Exception:
             return None
+    
+    
+    async def perform_searches(self, search_plan: WebSearchPlan) -> list[str]:
+        """ Perform the searches to perform for the query """
+        print("Searching...")
+        num_completed = 0
+        tasks = [asyncio.create_task(self.search(item)) for item in search_plan.searches]
+        results = []
+        for task in asyncio.as_completed(tasks):
+            result = await task
+            if result is not None:
+                results.append(result)
+            num_completed += 1
+            print(f"Searching... {num_completed}/{len(tasks)} completed")
+        print("Finished searching")
+        return results
