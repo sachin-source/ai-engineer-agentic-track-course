@@ -1,29 +1,26 @@
 # Crew running notes
-
+## Theory or explainatory part
 ### Flowors
-* Crews : Autonomous solutions with AI teams of agents with different roles  
+- Crews : Autonomous solutions with AI teams of agents with different roles  
 For autonomous problem solving, creative collaboration, or exploratory tasks
 
-* Flows : Structured automations by dividing complex tasks into precise workflows  
+- Flows : Structured automations by dividing complex tasks into precise workflows  
 For deterministic outcomes, auditability, or precise control over execution
 
 ### Core concepts
-* Agent : An autonomous unit, with an LLM, a role, a goal, a backstory, memory, tools.
-* Task : A specific assignment to be carried out, with a description, expected output, agent.
-* Crew : A team of *Agents* and *Tasks*; either :  
+- Agent : An autonomous unit, with an LLM, a role, a goal, a backstory, memory, tools.
+- Task : A specific assignment to be carried out, with a description, expected output, agent.
+- Crew : A team of **Agents** and **Tasks**; either :  
 Sequential : run tasks in order they are defined  
 Hierarchical : use a manager LLM to assign
 
 ### Yaml configuration
-*Agent* and *Tasks* can be created by code, setting the backstory, description, expected output, etc  
+**Agent** and **Tasks** can be created by code, setting the backstory, description, expected output, etc  
 or you can define each in a YAML file that's provided when you create the code.
 
-#### crew.py
+### crew.py
 It all comes together with a Crew definition with decorators:
 - @CrewBase is annotated for class
 - @agent is annotated for agent definitions
 - @task is annotated for task definitions
 - @crew is annotated to the final function that generates Crew
-
-#### LLMs
-CrewAI uses the super simple framework - *LiteLLM* under the hood to interface with almost any LLM; set keys in .env file
