@@ -11,9 +11,9 @@ class Debate():
     tasks: List[Task]
 
     @agent
-    def researcher(self) -> Agent:
+    def debater(self) -> Agent:
         return Agent(
-            config=self.agents_config['researcher'],
+            config=self.agents_config['debater'],
             verbose=True
         )
 
