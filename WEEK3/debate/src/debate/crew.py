@@ -26,9 +26,9 @@ class Debate():
 
 
     @task
-    def research_task(self) -> Task:
+    def propose(self) -> Task:
         return Task(
-            config=self.tasks_config['research_task'],
+            config=self.tasks_config['propose'],
         )
 
     @task
