@@ -36,6 +36,12 @@ class Debate():
         return Task(
             config=self.tasks_config['oppose'],
         )
+    
+    @task
+    def decide(self) -> Task:
+        return Task(
+            config=self.tasks_config['decide'],
+        )
 
     @crew
     def crew(self) -> Crew:
