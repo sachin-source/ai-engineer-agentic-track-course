@@ -17,3 +17,10 @@ Hierarchical : use a manager LLM to assign
 ### Yaml configuration
 *Agent* and *Tasks* can be created by code, setting the backstory, description, expected output, etc  
 or you can define each in a YAML file that's provided when you create the code.
+
+#### crew.py
+It all comes together with a Crew definition with decorators:
+- @CrewBase is annotated for class
+- @agent is annotated for agent definitions
+- @task is annotated for task definitions
+- @crew is annotated to the final function that generates Crew
