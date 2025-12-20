@@ -32,10 +32,9 @@ class Debate():
         )
 
     @task
-    def reporting_task(self) -> Task:
+    def oppose(self) -> Task:
         return Task(
-            config=self.tasks_config['reporting_task'],
-            output_file='report.md'
+            config=self.tasks_config['oppose'],
         )
 
     @crew
