@@ -18,9 +18,9 @@ class Debate():
         )
 
     @agent
-    def reporting_analyst(self) -> Agent:
+    def judge(self) -> Agent:
         return Agent(
-            config=self.agents_config['reporting_analyst'],
+            config=self.agents_config['judge'],
             verbose=True
         )
 
