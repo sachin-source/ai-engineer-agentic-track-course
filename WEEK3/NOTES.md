@@ -24,3 +24,6 @@ It all comes together with a Crew definition with decorators:
 - @agent is annotated for agent definitions
 - @task is annotated for task definitions
 - @crew is annotated to the final function that generates Crew
+
+### LLMs
+CrewAI uses the super simple framework - **LiteLLM** under the hood to interface with almost any LLM; set keys in .env file
