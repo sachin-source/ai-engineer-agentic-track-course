@@ -21,3 +21,7 @@ class FinancialResearcher():
     @task
     def research_task (self) -> Agent:
         return Task(config=self.tasks_config['research_task'], verbose=True)
+    
+    @task
+    def analysis_task (self) -> Agent:
+        return Task(config=self.tasks_config['analysis_task'], verbose=True)
