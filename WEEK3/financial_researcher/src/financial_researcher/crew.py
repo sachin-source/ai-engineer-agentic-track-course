@@ -9,3 +9,7 @@ class FinancialResearcher():
 
     agents: List[BaseAgent]
     tasks: List[Task]
+    
+    @agent
+    def researcher (self) -> Agent:
+        return Agent(config:self.agents_config['researcher'])
