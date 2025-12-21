@@ -17,3 +17,7 @@ class FinancialResearcher():
     @agent
     def analyst (self) -> Agent:
         return Agent(config=self.agents_config['analyst'], verbose=True)
+    
+    @task
+    def research_task (self) -> Agent:
+        return Task(config=self.tasks_config['research_task'], verbose=True)
