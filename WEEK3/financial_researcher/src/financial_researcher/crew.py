@@ -25,3 +25,12 @@ class FinancialResearcher():
     @task
     def analysis_task (self) -> Agent:
         return Task(config=self.tasks_config['analysis_task'], verbose=True)
+    
+    @crew
+    def crew(self) -> Crew:
+        return Crew(
+            agents=self.agents,
+            tasks=self.tasks,
+            process=Process.sequential,
+            verbose=True
+        )
