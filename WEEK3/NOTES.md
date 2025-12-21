@@ -13,6 +13,8 @@ For deterministic outcomes, auditability, or precise control over execution
 - Crew : A team of **Agents** and **Tasks**; either :  
 Sequential : run tasks in order they are defined  
 Hierarchical : use a manager LLM to assign
+- Tools : Equiping agents with capabilities
+- context : Information passed from 1 task to another
 
 ### Yaml configuration
 **Agent** and **Tasks** can be created by code, setting the backstory, description, expected output, etc  
