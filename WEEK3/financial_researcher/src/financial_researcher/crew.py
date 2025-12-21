@@ -13,7 +13,7 @@ class FinancialResearcher():
     
     @agent
     def researcher (self) -> Agent:
-        return Agent(config=self.agents_config['researcher'], verbose=True)
+        return Agent(config=self.agents_config['researcher'], verbose=True, tools=[SerperDevTool()])
     
     @agent
     def analyst (self) -> Agent:
