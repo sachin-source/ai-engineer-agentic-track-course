@@ -67,3 +67,12 @@ class StockPicker():
         return Task(
             config=self.tasks_config['pick_best_company'],
         )
+    
+    @crew
+    def Crew(self) -> Crew:
+        
+        manager = Agent(
+            config=self.agents_config['manager'],
+            allow_delegation=True
+        )
+          
