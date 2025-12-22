@@ -9,6 +9,10 @@ class TrendingCompany(BaseModel):
     ticker: str = Field(description="Stock ticker symbol")
     reason: str = Field(description="Reason this company is trending in the news")
 
+class TrendingCompanyList(BaseModel):
+    """ List of multiple trending companies that are in the news """
+    companies: List[TrendingCompany] = Field(description="List of companies trending in the news")
+
 @CrewBase
 class StockPicker():
     """StockPicker crew"""
