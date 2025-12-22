@@ -3,16 +3,18 @@ from typing import Type
 from pydantic import BaseModel, Field
 
 
-class MyCustomToolInput(BaseModel):
-    """Input schema for MyCustomTool."""
+class PushNotification(BaseModel):
+    """A message to be sent to the User"""
     argument: str = Field(..., description="Description of the argument.")
 
-class MyCustomTool(BaseTool):
-    name: str = "Name of my tool"
+class PushNotificationTool(BaseTool):
+    
+
+    name: str = "Send a Push Notification"
     description: str = (
-        "Clear description for what this tool is useful for, your agent will need this information to use it."
+        "This tool is used to send a push notification to the user."
     )
-    args_schema: Type[BaseModel] = MyCustomToolInput
+    args_schema: Type[BaseModel] = PushNotification
 
     def _run(self, argument: str) -> str:
         # Implementation goes here
