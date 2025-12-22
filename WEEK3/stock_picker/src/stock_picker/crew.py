@@ -54,3 +54,10 @@ class StockPicker():
         return Task(
             config=self.tasks_config['find_trending_companies'], output_pydantic=TrendingCompanyList
             )
+
+    @task
+    def research_trending_companies(self) -> Task:
+        return Task(
+            config=self.tasks_config['research_trending_companies'],
+            output_pydantic=TrendingCompanyResearchList,
+        )
