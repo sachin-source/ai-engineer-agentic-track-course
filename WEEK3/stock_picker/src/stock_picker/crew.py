@@ -75,4 +75,10 @@ class StockPicker():
             config=self.agents_config['manager'],
             allow_delegation=True
         )
-          
+        return Crew(
+            agents=self.agents,
+            tasks=self.tasks, 
+            process=Process.hierarchical,
+            verbose=True,
+            manager_agent=manager
+            )
