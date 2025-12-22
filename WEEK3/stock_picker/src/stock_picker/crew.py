@@ -33,8 +33,8 @@ class TrendingCompanyResearchList(BaseModel):
 class StockPicker():
     """StockPicker crew"""
 
-    agents: List[BaseAgent]
-    tasks: List[Task]
+    agents_config = "configs/agents.yaml"
+    tasks_config = "configs/tasks.yaml"
     
     @agent
     def trending_company_finder(self) -> Agent:
