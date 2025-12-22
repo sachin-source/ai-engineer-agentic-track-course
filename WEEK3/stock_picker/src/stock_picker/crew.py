@@ -39,3 +39,7 @@ class StockPicker():
     @agent
     def trending_company_finder(self) -> Agent:
         return Agent(config=self.agents_config['trending_company_finder'], tools=[SerperDevTool()])
+    
+    @agent
+    def financial_researcher(self) -> Agent:
+        return Agent(config=self.agents_config['financial_researcher'], tools=[SerperDevTool()])
