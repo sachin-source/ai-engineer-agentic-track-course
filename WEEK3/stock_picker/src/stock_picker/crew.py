@@ -20,6 +20,10 @@ class TrendingCompanyResearch(BaseModel):
     future_outlook: str = Field(description="Future outlook and growth prospects")
     investment_potential: str = Field(description="Investment potential and suitability for investment")
 
+class TrendingCompanyResearchList(BaseModel):
+    """ A list of detailed research on all the companies """
+    research_list: List[TrendingCompanyResearch] = Field(description="Comprehensive research on all trending companies")
+
 @CrewBase
 class StockPicker():
     """StockPicker crew"""
