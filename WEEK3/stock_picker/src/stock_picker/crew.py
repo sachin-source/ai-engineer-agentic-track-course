@@ -1,7 +1,12 @@
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
-from crewai.agents.agent_builder.base_agent import BaseAgent
+from crewai_tools import SerperDevTool
+from pydantic import BaseModel, Field
 from typing import List
+from .tools.push_tool import PushNotificationTool
+from crewai.memory import LongTermMemory, ShortTermMemory, EntityMemory
+from crewai.memory.storage.rag_storage import RAGStorage
+from crewai.memory.storage.ltm_sqlite_storage import LTMSQLiteStorage
 
 class TrendingCompany(BaseModel):
     """ A company that is in the news and attracting attention """
@@ -30,3 +35,7 @@ class StockPicker():
 
     agents: List[BaseAgent]
     tasks: List[Task]
+    
+    @agent
+    def trending_company_finder(self) -> Agent:
+        return Agent(config=self.agents_config['trending_company_finder'], tools=[SerperDevTool()])
