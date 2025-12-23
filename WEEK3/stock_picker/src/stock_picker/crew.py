@@ -75,6 +75,13 @@ class StockPicker():
             config=self.agents_config['manager'],
             allow_delegation=True
         )
+        
+        # Long-term memory for persistent storage across sessions
+        long_term_memory = LongTermMemory(
+            storage=LTMSQLiteStorage(
+                db_path="./memory/long_term_memory_storage.db"
+            )
+        )
         return Crew(
             agents=self.agents,
             tasks=self.tasks, 
