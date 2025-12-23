@@ -6,3 +6,9 @@ from typing import List
 @CrewBase
 class Coder():
     """Coder crew"""
+
+    agents_config = 'config/agents.yaml'
+    tasks_config = 'config/tasks.yaml'
+
+    # One click install for Docker Desktop:
+    #https://docs.docker.com/desktop/
