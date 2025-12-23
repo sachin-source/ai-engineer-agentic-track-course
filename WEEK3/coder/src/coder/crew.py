@@ -12,3 +12,10 @@ class Coder():
 
     # One click install for Docker Desktop:
     #https://docs.docker.com/desktop/
+
+    @agent
+    def coder(self) -> Agent:
+        return Agent(
+            config=self.agents_config['coder'],
+            verbose=True 
+    )
