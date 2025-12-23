@@ -34,6 +34,7 @@ CrewAI uses the super simple framework - **LiteLLM** under the hood to interface
 - Short-Term memory : Temporarily stores recent interactions and outcomes using RAG, enabling agents to access relevant information during the current executions
 - Long-term memory : Preserves valuable insights and learnings, building knowledge over time
 - Entity memory : Information about people, places and concepts encountered during tasks, facilitating deeper understanding and relationship mapping. Uses RAG for storing entity information
+- Contextual memory :Maintains the context of interactions by combining all the above
 
 ## Installation and project setup
 - Install crewAI using UV - **uv tool install crewai**
