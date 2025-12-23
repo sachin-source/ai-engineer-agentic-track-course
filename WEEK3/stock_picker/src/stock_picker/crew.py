@@ -97,6 +97,19 @@ class StockPicker():
             )
         )
         
+        entity_memory = EntityMemory(
+            storage=RAGStorage(
+                embedder_config={
+                    "provider": "openai",
+                    "config": {
+                        "model": 'text-embedding-3-small'
+                    }
+                },
+                type="short_term",
+                path="./memory/"
+            )
+        )
+        
         return Crew(
             agents=self.agents,
             tasks=self.tasks, 
