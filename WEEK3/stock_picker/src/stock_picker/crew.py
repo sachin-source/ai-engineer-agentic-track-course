@@ -38,7 +38,7 @@ class StockPicker():
     
     @agent
     def trending_company_finder(self) -> Agent:
-        return Agent(config=self.agents_config['trending_company_finder'], tools=[SerperDevTool()])
+        return Agent(config=self.agents_config['trending_company_finder'], tools=[SerperDevTool()], memory=True)
     
     @agent
     def financial_researcher(self) -> Agent:
@@ -47,7 +47,7 @@ class StockPicker():
     
     @agent
     def stock_picker(self) -> Agent:
-        return Agent(config=self.agents_config['stock_picker'], tools=[PushNotificationTool()])
+        return Agent(config=self.agents_config['stock_picker'], tools=[PushNotificationTool()], memory=True)
     
     @task
     def find_trending_companies(self) -> Task:
