@@ -23,3 +23,9 @@ class Coder():
             max_execution_time=30, 
             max_retry_limit=3 
     )
+
+    @task
+    def coding_task(self) -> Task:
+        return Task(
+            config=self.tasks_config['coding_task'],
+        )
