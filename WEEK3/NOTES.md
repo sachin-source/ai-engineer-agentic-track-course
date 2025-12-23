@@ -37,6 +37,9 @@ CrewAI uses the super simple framework - **LiteLLM** under the hood to interface
 - Contextual memory : Maintains the context of interactions by combining all the above
 - User memory : Stores user specific information and preferences, enhancing personalization and user experience (this is upto us to manage and include in prompts)
 
+### Enabling crew to code
+Crew has ability to code, execute it in a Docker container, and investigate the results
+
 ## Installation and project setup
 - Install crewAI using UV - **uv tool install crewai**
 - Create a new project with - **crewai create my_project**
