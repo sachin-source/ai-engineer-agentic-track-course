@@ -29,3 +29,14 @@ class Coder():
         return Task(
             config=self.tasks_config['coding_task'],
         )
+
+    @crew
+    def crew(self) -> Crew:
+        """Creates the Coder crew"""
+
+        return Crew(
+            agents=self.agents, 
+            tasks=self.tasks,
+            process=Process.sequential,
+            verbose=True,
+        )
