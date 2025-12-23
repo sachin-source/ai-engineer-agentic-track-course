@@ -30,6 +30,9 @@ It all comes together with a Crew definition with decorators:
 ### LLMs
 CrewAI uses the super simple framework - **LiteLLM** under the hood to interface with almost any LLM; set keys in .env file
 
+### Memory - more perspective
+
+
 ## Installation and project setup
 - Install crewAI using UV - **uv tool install crewai**
 - Create a new project with - **crewai create my_project**
