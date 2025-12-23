@@ -82,6 +82,21 @@ class StockPicker():
                 db_path="./memory/long_term_memory_storage.db"
             )
         )
+        
+        # Short-term memory for current context using RAG
+        short_term_memory = ShortTermMemory(
+            storage = RAGStorage(
+                    embedder_config={
+                        "provider": "openai",
+                        "config": {
+                            "model": 'text-embedding-3-small'
+                        }
+                    },
+                    type="short_term",
+                    path="./memory/"
+                )
+            )
+        
         return Crew(
             agents=self.agents,
             tasks=self.tasks, 
