@@ -31,7 +31,7 @@ It all comes together with a Crew definition with decorators:
 CrewAI uses the super simple framework - **LiteLLM** under the hood to interface with almost any LLM; set keys in .env file
 
 ### Memory - more perspective
-
+- Short-Term memory : Temporarily stores recent interactions and outcomes using RAG, enabling agents to access relevant information during the current executions
 
 ## Installation and project setup
 - Install crewAI using UV - **uv tool install crewai**
