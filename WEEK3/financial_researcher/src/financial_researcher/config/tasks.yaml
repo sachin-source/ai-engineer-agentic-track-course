@@ -1,51 +1,33 @@
-design_task:
+research_task:
   description: >
-    Take the high level requirements described here and prepare a detailed design for the engineer;
-    everything should be in 1 python module, but outline the classes and methods in the module.
-    Here are the requirements: {requirements}
-    IMPORTANT: Only output the design in markdown format, laying out in detail the classes and functions in the module, describing the functionality.
-  expected_output: >
-    A detailed design for the engineer, identifying the classes and functions in the module.
-  agent: engineering_lead
-  output_file: output/{module_name}_design.md
-  
-code_task:
-  description: >
-    Write a python module that implements the design described by the engineering lead, in order to achieve the requirements.
-    Here are the requirements: {requirements}
-  expected_output: >
-    A python module that implements the design and achieves the requirements.
-    IMPORTANT: Output ONLY the raw Python code without any markdown formatting, code block delimiters, or backticks.
-    The output should be valid Python code that can be directly saved to a file and executed.
-  agent: backend_engineer
-  context:
-    - design_task
-  output_file: output/{module_name}
+    Conduct thorough research on company {company}. Focus on:
+    1. Current company status and health
+    2. Historical company performance
+    3. Major challenges and opportunities
+    4. Recent news and events
+    5. Future outlook and potential developments
 
-  
-frontend_task:
-  description: >
-    Write a gradio UI in a module app.py that demonstrates the given backend class in {module_name}.
-    Assume there is only 1 user, and keep the UI very simple indeed - just a prototype or demo.
-    Here are the requirements: {requirements}
+    Make sure to organize your findings in a structured format with clear sections.
   expected_output: >
-    A gradio UI in module app.py that demonstrates the given backend class.
-    The file should be ready so that it can be run as-is, in the same directory as the backend module, and it should import the backend class from {module_name}.
-    IMPORTANT: Output ONLY the raw Python code without any markdown formatting, code block delimiters, or backticks.
-    The output should be valid Python code that can be directly saved to a file and executed.
-  agent: frontend_engineer
-  context:
-    - code_task
-  output_file: output/app.py
+    A comprehensive research document with well-organized sections covering
+    all the requested aspects of {company}. Include specific facts, figures,
+    and examples where relevant.
+  agent: researcher
 
-  test_task:
+analysis_task:
   description: >
-    Write unit tests for the given backend module {module_name} and create a test_{module_name} in the same directory as the backend module.
+    Analyze the research findings and create a comprehensive report on {company}.
+    Your report should:
+    1. Begin with an executive summary
+    2. Include all key information from the research
+    3. Provide insightful analysis of trends and patterns
+    4. Offer a market outlook for company, noting that this should not be used for trading decisions
+    5. Be formatted in a professional, easy-to-read style with clear headings
   expected_output: >
-    A test_{module_name} module that tests the given backend module.
-    IMPORTANT: Output ONLY the raw Python code without any markdown formatting, code block delimiters, or backticks.
-    The output should be valid Python code that can be directly saved to a file and executed.
-  agent: test_engineer
+    A polished, professional report on {company} that presents the research
+    findings with added analysis and insights. The report should be well-structured
+    with an executive summary, main sections, and conclusion.
+  agent: analyst
   context:
-    - code_task
-  output_file: output/test_{module_name}
+    - research_task
+  output_file: output/report.md
