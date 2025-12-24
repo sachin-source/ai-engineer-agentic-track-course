@@ -25,3 +25,9 @@ class FinancialResearcher():
             max_retry_limit=3 
         )
     
+    @agent
+    def frontend_engineer(self) -> Agent:
+        return Agent(
+            config=self.agents_config['frontend_engineer'],
+            verbose=True,
+        )
