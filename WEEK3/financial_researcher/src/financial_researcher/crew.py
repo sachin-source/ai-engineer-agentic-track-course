@@ -42,3 +42,9 @@ class FinancialResearcher():
             max_execution_time=500, 
             max_retry_limit=3 
         )
+    
+    @task
+    def design_task(self) -> Task:
+        return Task(
+            config=self.tasks_config['design_task']
+        )
