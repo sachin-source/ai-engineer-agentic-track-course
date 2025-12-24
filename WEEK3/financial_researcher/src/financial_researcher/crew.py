@@ -31,3 +31,14 @@ class FinancialResearcher():
             config=self.agents_config['frontend_engineer'],
             verbose=True,
         )
+    
+    @agent
+    def test_engineer(self) -> Agent:
+        return Agent(
+            config=self.agents_config['test_engineer'],
+            verbose=True,
+            allow_code_execution=True,
+            code_execution_mode="safe",  # Uses Docker for safety
+            max_execution_time=500, 
+            max_retry_limit=3 
+        )
