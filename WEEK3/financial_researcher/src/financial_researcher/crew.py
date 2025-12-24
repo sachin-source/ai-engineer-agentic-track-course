@@ -60,3 +60,9 @@ class FinancialResearcher():
         return Task(
             config=self.tasks_config['frontend_task'],
         )
+    
+    @task
+    def test_task(self) -> Task:
+        return Task(
+            config=self.tasks_config['test_task'],
+        )
