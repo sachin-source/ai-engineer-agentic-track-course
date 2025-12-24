@@ -48,3 +48,9 @@ class FinancialResearcher():
         return Task(
             config=self.tasks_config['design_task']
         )
+    
+    @task
+    def code_task(self) -> Task:
+        return Task(
+            config=self.tasks_config['code_task'],
+        )
