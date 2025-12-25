@@ -7,3 +7,10 @@
 - **Edges** are python functions that determine which *Node* to execute next based on the *State*. They can be conditional or fixed.  
 Nodes do the work  
 Edges choose what to do next
+
+### Five steps to the first graph :
+- Define the *state* class
+- Start the Graph builder
+- Create a *Node*
+- Create *edges*
+- Compile the graph
