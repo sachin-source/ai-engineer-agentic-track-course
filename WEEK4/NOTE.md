@@ -14,3 +14,9 @@ Edges choose what to do next
 - Create a *Node*
 - Create *edges*
 - Compile the graph
+
+### More on the state :
+- **State** is immutable
+- For each field in your state, you can specify a special function called a **reducer**
+- When you return a new **state**, langGraph uses the **reducer** to combine this field with existing state.
+- This enables langGraph to run multiple nodes concurrently and combine **State** without overwriting
