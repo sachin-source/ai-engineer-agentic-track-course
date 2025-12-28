@@ -35,3 +35,12 @@ graph_builder.add_edge("chatbot", END)
 # Step 5: Compile the Graph
 graph = graph_builder.compile()
 # display(Image(graph.get_graph().draw_mermaid_png()))
+
+def chat(user_input: str, history):
+    initial_state = State(messages=[{"role": "user", "content": user_input}])
+    result = graph.invoke(initial_state)
+    print(result)
+    return result['messages'][-1].content
+
+
+gr.ChatInterface(chat, type="messages").launch()
