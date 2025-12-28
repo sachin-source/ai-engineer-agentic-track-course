@@ -27,3 +27,7 @@ def chatbot_node(old_state: State) -> State:
     return new_state
 
 graph_builder.add_node("chatbot", chatbot_node)
+
+# Step 4: Create Edges
+graph_builder.add_edge(START, "chatbot")
+graph_builder.add_edge("chatbot", END)
