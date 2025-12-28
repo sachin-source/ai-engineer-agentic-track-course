@@ -55,3 +55,10 @@ graph_builder = StateGraph(State)
 # This is different:
 llm = ChatOpenAI(model="gpt-4o-mini")
 llm_with_tools = llm.bind_tools(tools)
+
+# Step 3: Create a Node
+def chatbot(state: State):
+    return {"messages": [llm_with_tools.invoke(state["messages"])]}
+
+graph_builder.add_node("chatbot", chatbot)
+graph_builder.add_node("tools", ToolNode(tools=tools))
