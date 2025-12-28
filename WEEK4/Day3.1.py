@@ -44,3 +44,7 @@ tool_push = Tool(
 # tool_push.invoke("Hello, me")
 
 tools = [tool_search, tool_push]
+
+# Step 1: Define the State object
+class State(TypedDict):
+    messages: Annotated[list, add_messages]
