@@ -16,3 +16,14 @@ class State(BaseModel):
 
 # Step 2: Start the Graph Builder with this State class
 graph_builder = StateGraph(State)
+
+# Step 3: Create a Node
+
+llm = ChatOpenAI(model="gpt-4o-mini")
+
+def chatbot_node(old_state: State) -> State:
+    response = llm.invoke(old_state.messages)
+    new_state = State(messages=[response])
+    return new_state
+
+graph_builder.add_node("chatbot", chatbot_node)
