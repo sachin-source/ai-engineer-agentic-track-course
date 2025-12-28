@@ -47,3 +47,5 @@ def chat(user_input: str, history):
     return result["messages"][-1].content
 
 gr.ChatInterface(chat, type="messages").launch()
+
+# graph.get_state(config)
