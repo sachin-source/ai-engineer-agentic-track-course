@@ -42,3 +42,5 @@ tool_push = Tool(
     )
 
 # tool_push.invoke("Hello, me")
+
+tools = [tool_search, tool_push]
