@@ -69,3 +69,7 @@ graph_builder.add_conditional_edges( "chatbot", tools_condition, "tools")
 # Any time a tool is called, we return to the chatbot to decide the next step
 graph_builder.add_edge("tools", "chatbot")
 graph_builder.add_edge(START, "chatbot")
+
+# Step 5: Compile the Graph
+graph = graph_builder.compile()
+display(Image(graph.get_graph().draw_mermaid_png()))
