@@ -23,3 +23,7 @@ def shout(text: Annotated[str, "something to be shouted"]) -> str:
     return text.upper()
 
 shout("hello")
+
+
+class State(BaseModel):
+    messages: Annotated[list, add_messages]
