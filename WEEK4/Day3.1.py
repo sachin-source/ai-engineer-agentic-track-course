@@ -51,3 +51,7 @@ class State(TypedDict):
 
 # Step 2: Start the Graph Builder with this State class
 graph_builder = StateGraph(State)
+
+# This is different:
+llm = ChatOpenAI(model="gpt-4o-mini")
+llm_with_tools = llm.bind_tools(tools)
