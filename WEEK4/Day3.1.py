@@ -9,3 +9,6 @@ import requests
 import os
 from langchain_openai import ChatOpenAI
 from typing import TypedDict
+
+# Our favorite first step! Crew was doing this for us, by the way.
+load_dotenv(override=True)
