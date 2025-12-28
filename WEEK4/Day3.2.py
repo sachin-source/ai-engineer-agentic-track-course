@@ -14,3 +14,5 @@ from langchain_community.utilities import GoogleSerperAPIWrapper
 from langchain.agents import Tool
 
 from langgraph.checkpoint.memory import MemorySaver
+
+memory = MemorySaver()
