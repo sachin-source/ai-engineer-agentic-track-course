@@ -45,3 +45,5 @@ graph_builder.add_edge(START, "first_node")
 graph_builder.add_edge("first_node", END)
 
 graph = graph_builder.compile()
+
+# display(Image(graph.get_graph().draw_mermaid_png()))
