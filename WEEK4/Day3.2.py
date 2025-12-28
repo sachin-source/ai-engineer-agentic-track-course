@@ -49,3 +49,6 @@ def chat(user_input: str, history):
 gr.ChatInterface(chat, type="messages").launch()
 
 # graph.get_state(config)
+
+# Most recent first
+list(graph.get_state_history(config))
