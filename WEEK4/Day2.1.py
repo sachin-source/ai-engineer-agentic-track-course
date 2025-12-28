@@ -14,3 +14,6 @@ import random
 
 nouns = ["Cabbages", "Unicorns", "Toasters", "Penguins", "Bananas", "Zombies", "Rainbows", "Eels", "Pickles", "Muffins"]
 adjectives = ["outrageous", "smelly", "pedantic", "existential", "moody", "sparkly", "untrustworthy", "sarcastic", "squishy", "haunted"]
+
+# Our favorite first step! Crew was doing this for us, by the way.
+load_dotenv(override=True)
