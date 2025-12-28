@@ -47,3 +47,14 @@ graph_builder.add_edge("first_node", END)
 graph = graph_builder.compile()
 
 # display(Image(graph.get_graph().draw_mermaid_png()))
+
+def chat(user_input: str, history):
+    message = {"role": "user", "content": user_input}
+    messages = [message]
+    state = State(messages=messages)
+    result = graph.invoke(state)
+    print(result)
+    return result["messages"][-1].content
+
+
+gr.ChatInterface(chat, type="messages").launch()
