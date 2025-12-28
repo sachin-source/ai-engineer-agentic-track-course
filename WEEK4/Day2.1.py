@@ -17,3 +17,9 @@ adjectives = ["outrageous", "smelly", "pedantic", "existential", "moody", "spark
 
 # Our favorite first step! Crew was doing this for us, by the way.
 load_dotenv(override=True)
+
+def shout(text: Annotated[str, "something to be shouted"]) -> str:
+    print(text.upper())
+    return text.upper()
+
+shout("hello")
