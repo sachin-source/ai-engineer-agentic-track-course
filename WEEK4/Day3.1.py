@@ -48,3 +48,6 @@ tools = [tool_search, tool_push]
 # Step 1: Define the State object
 class State(TypedDict):
     messages: Annotated[list, add_messages]
+
+# Step 2: Start the Graph Builder with this State class
+graph_builder = StateGraph(State)
