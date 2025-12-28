@@ -29,3 +29,14 @@ class State(BaseModel):
     messages: Annotated[list, add_messages]
 
 graph_builder = StateGraph(State)
+
+def our_first_node(old_state: State) -> State:
+
+    reply = f"{random.choice(nouns)} are {random.choice(adjectives)}"
+    messages = [{"role": "assistant", "content": reply}]
+
+    new_state = State(messages=messages)
+
+    return new_state
+
+graph_builder.add_node("first_node", our_first_node)
