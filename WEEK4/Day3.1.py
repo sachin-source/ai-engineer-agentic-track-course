@@ -62,3 +62,7 @@ def chatbot(state: State):
 
 graph_builder.add_node("chatbot", chatbot)
 graph_builder.add_node("tools", ToolNode(tools=tools))
+
+# Step 4: Create Edges
+graph_builder.add_conditional_edges( "chatbot", tools_condition, "tools")
+
