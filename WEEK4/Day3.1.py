@@ -26,3 +26,11 @@ tool_search =Tool(
     )
 
 # tool_search.invoke("What is the capital of France?")
+
+pushover_token = os.getenv("PUSHOVER_TOKEN")
+pushover_user = os.getenv("PUSHOVER_USER")
+pushover_url = "https://api.pushover.net/1/messages.json"
+
+def push(text: str):
+    """Send a push notification to the user"""
+    requests.post(pushover_url, data = {"token": pushover_token, "user": pushover_user, "message": text})
