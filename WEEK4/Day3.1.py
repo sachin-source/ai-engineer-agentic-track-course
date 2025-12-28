@@ -12,3 +12,8 @@ from typing import TypedDict
 
 # Our favorite first step! Crew was doing this for us, by the way.
 load_dotenv(override=True)
+
+from langchain_community.utilities import GoogleSerperAPIWrapper
+
+serper = GoogleSerperAPIWrapper()
+# serper.run("What is the capital of France?")
