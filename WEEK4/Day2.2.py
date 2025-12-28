@@ -9,3 +9,7 @@ from langgraph.graph.message import add_messages
 from langchain_openai import ChatOpenAI
 from pydantic import BaseModel
 import random
+
+# Step 1: Define the State object
+class State(BaseModel):
+    messages: Annotated[list, add_messages]
