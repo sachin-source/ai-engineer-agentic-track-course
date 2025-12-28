@@ -27,3 +27,5 @@ shout("hello")
 
 class State(BaseModel):
     messages: Annotated[list, add_messages]
+
+graph_builder = StateGraph(State)
