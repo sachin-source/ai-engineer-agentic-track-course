@@ -35,3 +35,7 @@ graph_builder.add_node("tools", ToolNode(tools=tools))
 graph_builder.add_conditional_edges( "chatbot", tools_condition, "tools")
 graph_builder.add_edge("tools", "chatbot")
 graph_builder.add_edge(START, "chatbot")
+
+# Step 5
+graph = graph_builder.compile(checkpointer=memory)
+# display(Image(graph.get_graph().draw_mermaid_png()))
