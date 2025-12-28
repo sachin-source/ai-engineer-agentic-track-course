@@ -34,4 +34,4 @@ graph_builder.add_edge("chatbot", END)
 
 # Step 5: Compile the Graph
 graph = graph_builder.compile()
-display(Image(graph.get_graph().draw_mermaid_png()))
+# display(Image(graph.get_graph().draw_mermaid_png()))
