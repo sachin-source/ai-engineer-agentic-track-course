@@ -24,3 +24,5 @@ tool_search =Tool(
         func=serper.run,
         description="Useful for when you need more information from an online search"
     )
+
+# tool_search.invoke("What is the capital of France?")
