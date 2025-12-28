@@ -9,3 +9,8 @@ from langgraph.graph.message import add_messages
 from langchain_openai import ChatOpenAI
 from pydantic import BaseModel
 import random
+
+# Some useful constants
+
+nouns = ["Cabbages", "Unicorns", "Toasters", "Penguins", "Bananas", "Zombies", "Rainbows", "Eels", "Pickles", "Muffins"]
+adjectives = ["outrageous", "smelly", "pedantic", "existential", "moody", "sparkly", "untrustworthy", "sarcastic", "squishy", "haunted"]
