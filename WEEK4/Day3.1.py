@@ -34,3 +34,11 @@ pushover_url = "https://api.pushover.net/1/messages.json"
 def push(text: str):
     """Send a push notification to the user"""
     requests.post(pushover_url, data = {"token": pushover_token, "user": pushover_user, "message": text})
+
+tool_push = Tool(
+        name="send_push_notification",
+        func=push,
+        description="useful for when you want to send a push notification"
+    )
+
+# tool_push.invoke("Hello, me")
