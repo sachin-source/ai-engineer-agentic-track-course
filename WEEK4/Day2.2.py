@@ -13,3 +13,6 @@ import random
 # Step 1: Define the State object
 class State(BaseModel):
     messages: Annotated[list, add_messages]
+
+# Step 2: Start the Graph Builder with this State class
+graph_builder = StateGraph(State)
