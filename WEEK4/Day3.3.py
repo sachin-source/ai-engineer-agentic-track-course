@@ -43,3 +43,11 @@ graph_builder.add_edge(START, "chatbot")
 # Step 5
 graph = graph_builder.compile(checkpointer=sql_memory)
 # display(Image(graph.get_graph().draw_mermaid_png()))
+
+config = {"configurable": {"thread_id": "3"}}
+
+def chat(user_input: str, history):
+    result = graph.invoke({"messages": [{"role": "user", "content": user_input}]}, config=config)
+    return result["messages"][-1].content
+
+gr.ChatInterface(chat, type="messages").launch()
