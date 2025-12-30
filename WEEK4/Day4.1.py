@@ -12,3 +12,5 @@ from langchain.agents import Tool
 
 from langchain_openai import ChatOpenAI
 from langgraph.checkpoint.memory import MemorySaver
+
+load_dotenv(override=True)
