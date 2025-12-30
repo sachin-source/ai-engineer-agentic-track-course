@@ -66,3 +66,5 @@ extract_text_tool = tool_dict.get("extract_text")
 
 import textwrap
 # print(textwrap.fill(text))
+
+all_tools = tools + [tool_push]
