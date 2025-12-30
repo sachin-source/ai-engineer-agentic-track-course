@@ -68,3 +68,11 @@ import textwrap
 # print(textwrap.fill(text))
 
 all_tools = tools + [tool_push]
+
+
+llm = ChatOpenAI(model="gpt-4o-mini")
+llm_with_tools = llm.bind_tools(all_tools)
+
+
+def chatbot(state: State):
+    return {"messages": [llm_with_tools.invoke(state["messages"])]}
