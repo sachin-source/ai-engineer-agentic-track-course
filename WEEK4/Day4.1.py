@@ -12,3 +12,5 @@ from IPython.display import Image, display
 import gradio as gr
 import uuid
 from dotenv import load_dotenv
+
+load_dotenv(override=True)
