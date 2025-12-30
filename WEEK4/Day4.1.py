@@ -80,3 +80,6 @@ def chatbot(state: State):
 graph_builder = StateGraph(State)
 graph_builder.add_node("chatbot", chatbot)
 graph_builder.add_node("tools", ToolNode(tools=all_tools))
+graph_builder.add_conditional_edges( "chatbot", tools_condition, "tools")
+graph_builder.add_edge("tools", "chatbot")
+graph_builder.add_edge(START, "chatbot")
