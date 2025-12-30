@@ -63,3 +63,6 @@ extract_text_tool = tool_dict.get("extract_text")
 #     await navigate_tool.arun({"url": "https://www.cnn.com"})
 #     text = await extract_text_tool.arun({})
 # test()
+
+import textwrap
+# print(textwrap.fill(text))
