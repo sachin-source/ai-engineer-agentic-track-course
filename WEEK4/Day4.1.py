@@ -76,3 +76,7 @@ llm_with_tools = llm.bind_tools(all_tools)
 
 def chatbot(state: State):
     return {"messages": [llm_with_tools.invoke(state["messages"])]}
+
+graph_builder = StateGraph(State)
+graph_builder.add_node("chatbot", chatbot)
+graph_builder.add_node("tools", ToolNode(tools=all_tools))
