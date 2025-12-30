@@ -34,3 +34,10 @@ tool_push = Tool(
         func=push,
         description="useful for when you want to send a push notification"
     )
+
+# Introducing nest_asyncio
+# Python async code only allows for one "event loop" processing aynchronous events.
+# The `nest_asyncio` library patches this, and is used for special situations, if you need to run a nested event loop.
+
+import nest_asyncio
+nest_asyncio.apply()
