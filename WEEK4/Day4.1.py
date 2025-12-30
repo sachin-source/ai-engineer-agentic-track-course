@@ -41,3 +41,12 @@ tool_push = Tool(
 
 import nest_asyncio
 nest_asyncio.apply()
+
+from langchain_community.agent_toolkits import PlayWrightBrowserToolkit
+from langchain_community.tools.playwright.utils import create_async_playwright_browser
+
+# If you get a NotImplementedError here or later, see the Heads Up at the top of the notebook
+
+async_browser =  create_async_playwright_browser(headless=False)  # headful mode
+toolkit = PlayWrightBrowserToolkit.from_browser(async_browser=async_browser)
+tools = toolkit.get_tools()
