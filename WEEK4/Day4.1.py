@@ -53,3 +53,13 @@ tools = toolkit.get_tools()
 
 # for tool in tools:
 #     print(f"{tool.name}={tool}")
+
+tool_dict = {tool.name:tool for tool in tools}
+
+navigate_tool = tool_dict.get("navigate_browser")
+extract_text_tool = tool_dict.get("extract_text")
+
+# async def test():
+#     await navigate_tool.arun({"url": "https://www.cnn.com"})
+#     text = await extract_text_tool.arun({})
+# test()
