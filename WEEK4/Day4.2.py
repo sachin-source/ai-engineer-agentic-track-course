@@ -146,3 +146,21 @@ def route_based_on_evaluation(state: State) -> str:
         return "END"
     else:
         return "worker"
+
+# Set up Graph Builder with State
+graph_builder = StateGraph(State)
+
+# Add nodes
+graph_builder.add_node("worker", worker)
+graph_builder.add_node("tools", ToolNode(tools=tools))
+graph_builder.add_node("evaluator", evaluator)
+
+# Add edges
+graph_builder.add_conditional_edges("worker", worker_router, {"tools": "tools", "evaluator": "evaluator"})
+graph_builder.add_edge("tools", "worker")
+graph_builder.add_conditional_edges("evaluator", route_based_on_evaluation, {"worker": "worker", "END": END})
+graph_builder.add_edge(START, "worker")
+
+# Compile the graph
+memory = MemorySaver()
+graph = graph_builder.compile(checkpointer=memory)
