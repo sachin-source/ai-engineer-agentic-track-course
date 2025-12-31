@@ -14,3 +14,12 @@ async def reset():
     new_sidekick = Sidekick()
     await new_sidekick.setup()
     return "", "", None, new_sidekick
+
+
+def free_resources(sidekick):
+    print("Cleaning up")
+    try:
+        if sidekick:
+            sidekick.cleanup()
+    except Exception as e:
+        print(f"Exception during cleanup: {e}")
