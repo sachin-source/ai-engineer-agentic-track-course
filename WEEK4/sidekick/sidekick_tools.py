@@ -31,3 +31,20 @@ def push(text: str):
 def get_file_tools():
     toolkit = FileManagementToolkit(root_dir="sandbox")
     return toolkit.get_tools()
+
+async def other_tools():
+    push_tool = Tool(name="send_push_notification", func=push, description="Use this tool when you want to send a push notification")
+    file_tools = get_file_tools()
+
+    tool_search =Tool(
+        name="search",
+        func=serper.run,
+        description="Use this tool when you want to get the results of an online web search"
+    )
+
+    wikipedia = WikipediaAPIWrapper()
+    wiki_tool = WikipediaQueryRun(api_wrapper=wikipedia)
+
+    python_repl = PythonREPLTool()
+    
+    return file_tools + [push_tool, tool_search, python_repl,  wiki_tool]
