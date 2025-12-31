@@ -15,3 +15,10 @@ import asyncio
 from datetime import datetime
 
 load_dotenv(override=True)
+
+class State(TypedDict):
+    messages: Annotated[List[Any], add_messages]
+    success_criteria: str
+    feedback_on_work: Optional[str]
+    success_criteria_met: bool
+    user_input_needed: bool
