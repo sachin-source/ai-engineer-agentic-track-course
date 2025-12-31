@@ -16,3 +16,9 @@ pushover_user = os.getenv("PUSHOVER_USER")
 pushover_url = "https://api.pushover.net/1/messages.json"
 
 serper = GoogleSerperAPIWrapper()
+
+async def playwright_tools():
+    playwright = await async_playwright().start()
+    browser = await playwright.chromium.launch(headless=False)
+    toolkit = PlayWrightBrowserToolkit.from_browser(async_browser=browser)
+    return toolkit.get_tools(), browser, playwright
