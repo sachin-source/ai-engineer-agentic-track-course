@@ -94,3 +94,21 @@ class Sidekick:
         return {
             "messages": [response],
         }
+
+    def worker_router(self, state: State) -> str:
+        last_message = state["messages"][-1]
+
+        if hasattr(last_message, "tool_calls") and last_message.tool_calls:
+            return "tools"
+        else:
+            return "evaluator"
+
+    def format_conversation(self, messages: List[Any]) -> str:
+        conversation = "Conversation history:\n\n"
+        for message in messages:
+            if isinstance(message, HumanMessage):
+                conversation += f"User: {message.content}\n"
+            elif isinstance(message, AIMessage):
+                text = message.content or "[Tools use]"
+                conversation += f"Assistant: {text}\n"
+        return conversation
