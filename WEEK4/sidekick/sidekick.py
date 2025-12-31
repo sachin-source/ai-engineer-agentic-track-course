@@ -13,3 +13,5 @@ from sidekick_tools import playwright_tools, other_tools
 import uuid
 import asyncio
 from datetime import datetime
+
+load_dotenv(override=True)
