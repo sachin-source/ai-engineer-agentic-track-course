@@ -37,3 +37,10 @@ nest_asyncio.apply()
 async_browser =  create_async_playwright_browser(headless=False)  # headful mode
 toolkit = PlayWrightBrowserToolkit.from_browser(async_browser=async_browser)
 tools = toolkit.get_tools()
+
+# Initialize the LLMs
+worker_llm = ChatOpenAI(model="gpt-4o-mini")
+worker_llm_with_tools = worker_llm.bind_tools(tools)
+
+evaluator_llm = ChatOpenAI(model="gpt-4o-mini")
+evaluator_llm_with_output = evaluator_llm.with_structured_output(EvaluatorOutput)
