@@ -164,3 +164,5 @@ graph_builder.add_edge(START, "worker")
 # Compile the graph
 memory = MemorySaver()
 graph = graph_builder.compile(checkpointer=memory)
+
+# display(Image(graph.get_graph().draw_mermaid_png()))
