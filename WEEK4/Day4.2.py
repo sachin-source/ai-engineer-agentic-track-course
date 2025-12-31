@@ -140,3 +140,9 @@ Also, decide if more user input is required, either because the assistant has a 
         "user_input_needed": eval_result.user_input_needed
     }
     return new_state
+
+def route_based_on_evaluation(state: State) -> str:
+    if state["success_criteria_met"] or state["user_input_needed"]:
+        return "END"
+    else:
+        return "worker"
