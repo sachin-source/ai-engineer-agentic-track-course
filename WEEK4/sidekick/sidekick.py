@@ -188,3 +188,19 @@ class Sidekick:
 
         # Compile the graph
         self.graph = graph_builder.compile(checkpointer=self.memory)
+
+    async def run_superstep(self, message, success_criteria, history):
+        config = {"configurable": {"thread_id": self.sidekick_id}}
+
+        state = {
+            "messages": message,
+            "success_criteria": success_criteria or "The answer should be clear and accurate",
+            "feedback_on_work": None,
+            "success_criteria_met": False,
+            "user_input_needed": False,
+        }
+        result = await self.graph.ainvoke(state, config=config)
+        user = {"role": "user", "content": message}
+        reply = {"role": "assistant", "content": result["messages"][-2].content}
+        feedback = {"role": "assistant", "content": result["messages"][-1].content}
+        return history + [user, reply, feedback]
