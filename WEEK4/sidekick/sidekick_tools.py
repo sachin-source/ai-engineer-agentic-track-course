@@ -22,3 +22,8 @@ async def playwright_tools():
     browser = await playwright.chromium.launch(headless=False)
     toolkit = PlayWrightBrowserToolkit.from_browser(async_browser=browser)
     return toolkit.get_tools(), browser, playwright
+
+def push(text: str):
+    """Send a push notification to the user"""
+    requests.post(pushover_url, data = {"token": pushover_token, "user": pushover_user, "message": text})
+    return "success"
