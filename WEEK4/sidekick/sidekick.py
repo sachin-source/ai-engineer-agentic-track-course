@@ -166,3 +166,25 @@ class Sidekick:
             return "END"
         else:
             return "worker"
+
+    async def build_graph(self):
+        # Set up Graph Builder with State
+        graph_builder = StateGraph(State)
+
+        # Add nodes
+        graph_builder.add_node("worker", self.worker)
+        graph_builder.add_node("tools", ToolNode(tools=self.tools))
+        graph_builder.add_node("evaluator", self.evaluator)
+
+        # Add edges
+        graph_builder.add_conditional_edges(
+            "worker", self.worker_router, {"tools": "tools", "evaluator": "evaluator"}
+        )
+        graph_builder.add_edge("tools", "worker")
+        graph_builder.add_conditional_edges(
+            "evaluator", self.route_based_on_evaluation, {"worker": "worker", "END": END}
+        )
+        graph_builder.add_edge(START, "worker")
+
+        # Compile the graph
+        self.graph = graph_builder.compile(checkpointer=self.memory)
