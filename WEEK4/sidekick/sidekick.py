@@ -29,3 +29,15 @@ class EvaluatorOutput(BaseModel):
     user_input_needed: bool = Field(
         description="True if more input is needed from the user, or clarifications, or the assistant is stuck"
     )
+
+class Sidekick:
+    def __init__(self):
+        self.worker_llm_with_tools = None
+        self.evaluator_llm_with_output = None
+        self.tools = None
+        self.llm_with_tools = None
+        self.graph = None
+        self.sidekick_id = str(uuid.uuid4())
+        self.memory = MemorySaver()
+        self.browser = None
+        self.playwright = None
