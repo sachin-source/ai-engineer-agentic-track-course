@@ -41,3 +41,12 @@ class Sidekick:
         self.memory = MemorySaver()
         self.browser = None
         self.playwright = None
+    
+    async def setup(self):
+        self.tools, self.browser, self.playwright = await playwright_tools()
+        self.tools += await other_tools()
+        worker_llm = ChatOpenAI(model="gpt-4o-mini")
+        self.worker_llm_with_tools = worker_llm.bind_tools(self.tools)
+        evaluator_llm = ChatOpenAI(model="gpt-4o-mini")
+        self.evaluator_llm_with_output = evaluator_llm.with_structured_output(EvaluatorOutput)
+        await self.build_graph()
