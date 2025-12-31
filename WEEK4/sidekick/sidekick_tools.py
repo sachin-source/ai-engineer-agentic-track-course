@@ -27,3 +27,7 @@ def push(text: str):
     """Send a push notification to the user"""
     requests.post(pushover_url, data = {"token": pushover_token, "user": pushover_user, "message": text})
     return "success"
+
+def get_file_tools():
+    toolkit = FileManagementToolkit(root_dir="sandbox")
+    return toolkit.get_tools()
