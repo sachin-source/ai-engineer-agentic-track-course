@@ -80,3 +80,11 @@ smart_agent = AssistantAgent(
 
 # function can directly be passed to agent as tool
 # reflect_on_tool_use=True --> Don't just return but also process the information that's returned. lets the agent learn from its tool use experience;
+
+async def get_assist_response():
+    return await smart_agent.on_messages([message], cancellation_token=CancellationToken())
+
+response = get_assist_response()
+for inner_message in response.inner_messages:
+    print(inner_message.content)
+response.chat_message.content
