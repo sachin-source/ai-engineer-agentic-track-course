@@ -19,3 +19,10 @@ agent = AssistantAgent(
     system_message="You are a helpful assistant for an airline. You give short, humorous answers.",
     model_client_stream=True
 )
+
+from autogen_core import CancellationToken
+
+async def getResponse():
+    return await agent.on_messages([message], cancellation_token=CancellationToken())
+response = getResponse()
+response.chat_message.content
