@@ -54,3 +54,13 @@ save_city_price("Rome", 499)
 save_city_price("Madrid", 550)
 save_city_price("Barcelona", 580)
 save_city_price("Berlin", 525)
+
+# Method to get price for a city
+def get_city_price(city_name: str) -> float | None:
+    """ Get the roundtrip ticket price to travel to the city """
+    conn = sqlite3.connect("tickets.db")
+    c = conn.cursor()
+    c.execute("SELECT round_trip_price FROM cities WHERE city_name = ?", (city_name.lower(),))
+    result = c.fetchone()
+    conn.close()
+    return result[0] if result else None
