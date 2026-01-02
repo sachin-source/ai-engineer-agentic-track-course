@@ -38,3 +38,19 @@ c = conn.cursor()
 c.execute("CREATE TABLE cities (city_name TEXT PRIMARY KEY, round_trip_price REAL)")
 conn.commit()
 conn.close()
+
+# Populate our database
+def save_city_price(city_name, round_trip_price):
+    conn = sqlite3.connect("tickets.db")
+    c = conn.cursor()
+    c.execute("REPLACE INTO cities (city_name, round_trip_price) VALUES (?, ?)", (city_name.lower(), round_trip_price))
+    conn.commit()
+    conn.close()
+
+# Some cities!
+save_city_price("London", 299)
+save_city_price("Paris", 399)
+save_city_price("Rome", 499)
+save_city_price("Madrid", 550)
+save_city_price("Barcelona", 580)
+save_city_price("Berlin", 525)
