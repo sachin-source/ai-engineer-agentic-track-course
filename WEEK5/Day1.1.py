@@ -24,3 +24,17 @@ async def getResponse():
 
 response = getResponse()
 response.chat_message.content
+
+import os
+import sqlite3
+
+# Delete existing database file if it exists
+if os.path.exists("tickets.db"):
+    os.remove("tickets.db")
+
+# Create the database and the table
+conn = sqlite3.connect("tickets.db")
+c = conn.cursor()
+c.execute("CREATE TABLE cities (city_name TEXT PRIMARY KEY, round_trip_price REAL)")
+conn.commit()
+conn.close()
