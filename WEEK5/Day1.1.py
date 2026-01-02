@@ -66,3 +66,17 @@ def get_city_price(city_name: str) -> float | None:
     return result[0] if result else None
 
 # get_city_price("Rome")
+
+from autogen_agentchat.agents import AssistantAgent
+
+smart_agent = AssistantAgent(
+    name="smart_airline_agent",
+    model_client=model_client,
+    system_message="You are a helpful assistant for an airline. You give short, humorous answers, including the price of a roundtrip ticket.",
+    model_client_stream=True,
+    tools=[get_city_price],
+    reflect_on_tool_use=True
+)
+
+# function can directly be passed to agent as tool
+# reflect_on_tool_use=True --> Don't just return but also process the information that's returned. lets the agent learn from its tool use experience;
