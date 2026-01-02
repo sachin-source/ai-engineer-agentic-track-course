@@ -64,3 +64,5 @@ def get_city_price(city_name: str) -> float | None:
     result = c.fetchone()
     conn.close()
     return result[0] if result else None
+
+# get_city_price("Rome")
