@@ -35,3 +35,9 @@ response = run_description()
 
 reply = response.chat_message.content
 display(Markdown(reply))
+
+import textwrap
+print(f"Scene:\n{textwrap.fill(reply.scene)}\n\n")
+print(f"Message:\n{textwrap.fill(reply.message)}\n\n")
+print(f"Style:\n{textwrap.fill(reply.style)}\n\n")
+print(f"Orientation:\n{textwrap.fill(reply.orientation)}\n\n")
