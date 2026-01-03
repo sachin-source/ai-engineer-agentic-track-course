@@ -41,3 +41,27 @@ print(f"Scene:\n{textwrap.fill(reply.scene)}\n\n")
 print(f"Message:\n{textwrap.fill(reply.message)}\n\n")
 print(f"Style:\n{textwrap.fill(reply.style)}\n\n")
 print(f"Orientation:\n{textwrap.fill(reply.orientation)}\n\n")
+
+# AutoGen's wrapper:
+
+from autogen_ext.tools.langchain import LangChainToolAdapter
+
+# LangChain tools:
+
+from langchain_community.utilities import GoogleSerperAPIWrapper
+from langchain_community.agent_toolkits import FileManagementToolkit
+from langchain.agents import Tool
+
+
+prompt = """Your task is to find a one-way non-stop flight from JFK to LHR in June 2025.
+First search online for promising deals.
+Next, write all the deals to a file called flights.md with full details.
+Finally, select the one you think is best and reply with a short summary.
+Reply with the selected flight only, and only after you have written the details to the file."""
+
+
+serper = GoogleSerperAPIWrapper()
+langchain_serper =Tool(name="internet_search", func=serper.run, description="useful for when you need to search the internet")
+autogen_serper = LangChainToolAdapter(langchain_serper)
+autogen_tools = [autogen_serper]
+
