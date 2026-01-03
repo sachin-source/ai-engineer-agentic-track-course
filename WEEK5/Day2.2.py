@@ -41,3 +41,10 @@ for message in result.messages:
 
 ### MCP inclusion
 from autogen_ext.tools.mcp import StdioServerParams, mcp_server_tools
+
+# Get the fetch tool from mcp-server-fetch.
+async def async_fetcher(mcp_server):
+    return await mcp_server_tools(mcp_server)
+
+fetch_mcp_server = StdioServerParams(command="uvx", args=["mcp-server-fetch"], read_timeout_seconds=30)
+fetcher = async_fetcher(mcp_server=fetch_mcp_server)
