@@ -18,3 +18,5 @@ url = "https://edwarddonner.com/wp-content/uploads/2024/10/from-software-enginee
 pil_image = Image.open(BytesIO(requests.get(url).content))
 img = AGImage(pil_image)
 img
+
+multi_modal_message = MultiModalMessage(content=["Describe the content of this image in detail", img], source="User")
