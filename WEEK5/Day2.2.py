@@ -6,6 +6,7 @@ from autogen_ext.models.openai import OpenAIChatCompletionClient
 from autogen_ext.tools.langchain import LangChainToolAdapter
 from langchain_community.utilities import GoogleSerperAPIWrapper
 from langchain.agents import Tool
+from IPython.display import display, Markdown
 
 serper = GoogleSerperAPIWrapper()
 langchain_serper =Tool(name="internet_search", func=serper.run, description="useful for when you need to search the internet")
@@ -48,3 +49,15 @@ async def async_fetcher(mcp_server):
 
 fetch_mcp_server = StdioServerParams(command="uvx", args=["mcp-server-fetch"], read_timeout_seconds=30)
 fetcher = async_fetcher(mcp_server=fetch_mcp_server)
+
+# Create an agent that can use the fetch tool.
+model_client = OpenAIChatCompletionClient(model="gpt-4o-mini")
+agent = AssistantAgent(name="fetcher", model_client=model_client, tools=fetcher, reflect_on_tool_use=True)  # type: ignore
+
+# Let the agent fetch the content of a URL and summarize it.
+async def run_agent(task: str):
+    return await agent.run(task=task)
+
+result = run_agent(task="Review edwarddonner.com and summarize what you learn. Reply in Markdown.")
+
+display(Markdown(result.messages[-1].content))
