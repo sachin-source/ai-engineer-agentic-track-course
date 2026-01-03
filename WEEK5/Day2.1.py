@@ -29,6 +29,9 @@ describer = AssistantAgent(
     system_message="You are good at describing images",
 )
 
-response = await describer.on_messages([multi_modal_message], cancellation_token=CancellationToken())
+async def run_description():
+    return await describer.on_messages([multi_modal_message], cancellation_token=CancellationToken())
+response = run_description()
+
 reply = response.chat_message.content
 display(Markdown(reply))
