@@ -71,3 +71,16 @@ for tool in langchain_file_management_tools:
 
 for tool in autogen_tools:
     print(tool.name, tool.description)
+
+model_client = OpenAIChatCompletionClient(model="gpt-4o-mini")
+agent = AssistantAgent(name="searcher", model_client=model_client, tools=autogen_tools, reflect_on_tool_use=True)
+message = TextMessage(content=prompt, source="user")
+
+async def run_agent():
+    return await agent.on_messages([message], cancellation_token=CancellationToken())
+
+result = run_agent()
+
+for message in result.inner_messages:
+    print(message.content)
+display(Markdown(result.chat_message.content))
