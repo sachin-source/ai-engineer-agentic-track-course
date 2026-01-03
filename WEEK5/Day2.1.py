@@ -74,13 +74,21 @@ for tool in autogen_tools:
 
 model_client = OpenAIChatCompletionClient(model="gpt-4o-mini")
 agent = AssistantAgent(name="searcher", model_client=model_client, tools=autogen_tools, reflect_on_tool_use=True)
-message = TextMessage(content=prompt, source="user")
 
-async def run_agent():
+async def run_agent(message):
     return await agent.on_messages([message], cancellation_token=CancellationToken())
 
-result = run_agent()
+message = TextMessage(content=prompt, source="user")
+result = run_agent(message=message)
 
 for message in result.inner_messages:
     print(message.content)
-display(Markdown(result.chat_message.content))
+# display(Markdown(result.chat_message.content))
+
+# Now we need to call the agent again to write the file
+message = TextMessage(content="OK proceed", source="user")
+result = run_agent(message=message)
+
+for message in result.inner_messages:
+    print(message.content)
+# display(Markdown(result.chat_message.content))
