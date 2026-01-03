@@ -20,3 +20,15 @@ img = AGImage(pil_image)
 img
 
 multi_modal_message = MultiModalMessage(content=["Describe the content of this image in detail", img], source="User")
+
+model_client = OpenAIChatCompletionClient(model="gpt-4o-mini")
+
+describer = AssistantAgent(
+    name="description_agent",
+    model_client=model_client,
+    system_message="You are good at describing images",
+)
+
+response = await describer.on_messages([multi_modal_message], cancellation_token=CancellationToken())
+reply = response.chat_message.content
+display(Markdown(reply))
