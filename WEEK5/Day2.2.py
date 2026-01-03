@@ -40,6 +40,4 @@ for message in result.messages:
     print(f"{message.source}:\n{message.content}\n\n")
 
 ### MCP inclusion
-from autogen_agentchat.agents import AssistantAgent
-from autogen_ext.models.openai import OpenAIChatCompletionClient
 from autogen_ext.tools.mcp import StdioServerParams, mcp_server_tools
