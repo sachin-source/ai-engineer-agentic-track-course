@@ -12,3 +12,9 @@ from pydantic import BaseModel, Field
 from typing import Literal
 
 load_dotenv(override=True)
+
+url = "https://edwarddonner.com/wp-content/uploads/2024/10/from-software-engineer-to-AI-DS.jpeg"
+
+pil_image = Image.open(BytesIO(requests.get(url).content))
+img = AGImage(pil_image)
+img
