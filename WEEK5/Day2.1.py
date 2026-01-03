@@ -65,3 +65,9 @@ langchain_serper =Tool(name="internet_search", func=serper.run, description="use
 autogen_serper = LangChainToolAdapter(langchain_serper)
 autogen_tools = [autogen_serper]
 
+langchain_file_management_tools = FileManagementToolkit(root_dir="sandbox").get_tools()
+for tool in langchain_file_management_tools:
+    autogen_tools.append(LangChainToolAdapter(tool))
+
+for tool in autogen_tools:
+    print(tool.name, tool.description)
