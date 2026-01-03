@@ -25,3 +25,10 @@ evaluation_agent = AssistantAgent(
     model_client=model_client,
     system_message="Provide constructive feedback. Respond with 'APPROVE' when your feedback is addressed.",
 )
+
+prompt = """Find a one-way non-stop flight from JFK to LHR in June 2025."""
+text_termination = TextMentionTermination("APPROVE")
+
+# With thanks to Peter A for adding in the max_turns - otherwise this can get into a loop..
+
+team = RoundRobinGroupChat([primary_agent, evaluation_agent], termination_condition=text_termination, max_turns=20)
