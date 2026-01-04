@@ -17,3 +17,7 @@ class SimpleAgent(RoutedAgent):
     def __init__(self) -> None:
         super().__init__("Simple")
 
+    @message_handler
+    async def on_my_message(self, message: Message, ctx: MessageContext) -> Message:
+        """Handles messages sent to this agent. AutoGen will route messages based on the input type."""
+        return Message(content=f"This is {self.id.type}-{self.id.key}. You said '{message.content}' and I disagree.")
