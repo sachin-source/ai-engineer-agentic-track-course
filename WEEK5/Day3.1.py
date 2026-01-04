@@ -21,3 +21,10 @@ class SimpleAgent(RoutedAgent):
     async def on_my_message(self, message: Message, ctx: MessageContext) -> Message:
         """Handles messages sent to this agent. AutoGen will route messages based on the input type."""
         return Message(content=f"This is {self.id.type}-{self.id.key}. You said '{message.content}' and I disagree.")
+
+# Register the agent in the runtime; SingleThreadedAgentRuntime is for STANDALONE
+runtime = SingleThreadedAgentRuntime()
+async def agent_registeration():
+    await SimpleAgent.register(runtime, "simple_agent", lambda: SimpleAgent())
+
+agent_registeration()
