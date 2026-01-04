@@ -68,3 +68,13 @@ async def register_agents():
     await MyLLMAgent.register(runtime, "LLMAgent", lambda: MyLLMAgent())
 
 register_agents()
+
+runtime.start()  # Start processing messages in the background.
+response = send_message(Message("Hi there!"), AgentId("LLMAgent", "default"))
+# response = await runtime.send_message(Message("Hi there!"), AgentId("LLMAgent", "default"))
+print(">>>", response.content)
+response = send_message(Message(response.content), AgentId("simple_agent", "default"))
+# response =  await runtime.send_message(Message(response.content), AgentId("simple_agent", "default"))
+print(">>>", response.content)
+response = send_message(Message(response.content), AgentId("LLMAgent", "default"))
+# response = await runtime.send_message(Message(response.content), AgentId("LLMAgent", "default"))
