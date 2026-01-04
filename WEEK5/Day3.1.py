@@ -27,20 +27,20 @@ runtime = SingleThreadedAgentRuntime()
 async def agent_registeration():
     await SimpleAgent.register(runtime, "simple_agent", lambda: SimpleAgent())
 
-agent_registeration()
+# agent_registeration()
 
-runtime.start()
+# runtime.start()
 
 agent_id = AgentId("simple_agent", "default")
 
 async def send_message(message: Message, agent_id: AgentId):
     return await runtime.send_message(message, agent_id)
 
-response = send_message(Message("Well hi there!"), agent_id)
-print(">>>", response.content)
+# response = send_message(Message("Well hi there!"), agent_id)
+# print(">>>", response.content)
 
 async def shutdown():
     await runtime.stop()
     await runtime.close()
 
-shutdown()
+# shutdown()
