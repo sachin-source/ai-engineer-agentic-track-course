@@ -78,3 +78,5 @@ response = send_message(Message(response.content), AgentId("simple_agent", "defa
 print(">>>", response.content)
 response = send_message(Message(response.content), AgentId("LLMAgent", "default"))
 # response = await runtime.send_message(Message(response.content), AgentId("LLMAgent", "default"))
+
+shutdown()
