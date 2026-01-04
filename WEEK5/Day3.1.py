@@ -128,3 +128,11 @@ class RockPaperScissorsAgent(RoutedAgent):
         message = TextMessage(content=judgement, source="user")
         response = await self._delegate.on_messages([message], ctx.cancellation_token)
         return Message(content=result + response.chat_message.content)
+
+runtime = SingleThreadedAgentRuntime()
+async def register_game_agents():
+    await Player1Agent.register(runtime, "player1", lambda: Player1Agent("player1"))
+    await Player2Agent.register(runtime, "player2", lambda: Player2Agent("player2"))
+    await RockPaperScissorsAgent.register(runtime, "rock_paper_scissors", lambda: RockPaperScissorsAgent("rock_paper_scissors"))
+register_game_agents()
+runtime.start()
