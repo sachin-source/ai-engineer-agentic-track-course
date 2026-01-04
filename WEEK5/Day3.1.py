@@ -44,3 +44,20 @@ async def shutdown():
     await runtime.close()
 
 # shutdown()
+
+
+class MyLLMAgent(RoutedAgent):
+    def __init__(self) -> None:
+        super().__init__("LLMAgent")
+        model_client = OpenAIChatCompletionClient(model="gpt-4o-mini")
+        self._delegate = AssistantAgent("LLMAgent", model_client=model_client)
+
+    @message_handler
+    async def handle_my_message_type(self, message: Message, ctx: MessageContext) -> Message:
+        print(f"{self.id.type} received message: {message.content}")
+        text_message = TextMessage(content=message.content, source="user")
+        response = await self._delegate.on_messages([text_message], ctx.cancellation_token)
+        reply = response.chat_message.content
+        print(f"{self.id.type} responded: {reply}")
+        return Message(content=reply)
+    
