@@ -61,3 +61,10 @@ class MyLLMAgent(RoutedAgent):
         print(f"{self.id.type} responded: {reply}")
         return Message(content=reply)
     
+
+runtime = SingleThreadedAgentRuntime()
+async def register_agents():
+    await SimpleAgent.register(runtime, "simple_agent", lambda: SimpleAgent())
+    await MyLLMAgent.register(runtime, "LLMAgent", lambda: MyLLMAgent())
+
+register_agents()
