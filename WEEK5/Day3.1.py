@@ -28,3 +28,5 @@ async def agent_registeration():
     await SimpleAgent.register(runtime, "simple_agent", lambda: SimpleAgent())
 
 agent_registeration()
+
+runtime.start()
