@@ -16,3 +16,7 @@
 - Decouples an agent's logic from how messages are delivered
 - The framework handles creation & communication
 - The Agents are responsible for their logic - that is not the remit of Autogen Core
+
+### AutoGen Core runtime
+- Standalone
+- Distributed
