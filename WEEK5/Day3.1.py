@@ -141,3 +141,5 @@ agent_id = AgentId("rock_paper_scissors", "default")
 message = Message(content="go")
 response = send_message(message, agent_id)
 print(response.content)
+
+shutdown()
