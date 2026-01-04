@@ -30,3 +30,11 @@ async def agent_registeration():
 agent_registeration()
 
 runtime.start()
+
+agent_id = AgentId("simple_agent", "default")
+
+async def send_message(message: Message, agent_id: AgentId):
+    return await runtime.send_message(message, agent_id)
+
+response = send_message(Message("Well hi there!"), agent_id)
+print(">>>", response.content)
