@@ -38,3 +38,9 @@ async def send_message(message: Message, agent_id: AgentId):
 
 response = send_message(Message("Well hi there!"), agent_id)
 print(">>>", response.content)
+
+async def shutdown():
+    await runtime.stop()
+    await runtime.close()
+
+shutdown()
