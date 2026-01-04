@@ -7,3 +7,8 @@ from autogen_ext.models.openai import OpenAIChatCompletionClient
 from dotenv import load_dotenv
 
 load_dotenv(override=True)
+
+# Let's have a simple one!
+@dataclass
+class Message:
+    content: str
