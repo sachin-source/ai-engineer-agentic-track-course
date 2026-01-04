@@ -136,3 +136,8 @@ async def register_game_agents():
     await RockPaperScissorsAgent.register(runtime, "rock_paper_scissors", lambda: RockPaperScissorsAgent("rock_paper_scissors"))
 register_game_agents()
 runtime.start()
+
+agent_id = AgentId("rock_paper_scissors", "default")
+message = Message(content="go")
+response = send_message(message, agent_id)
+print(response.content)
