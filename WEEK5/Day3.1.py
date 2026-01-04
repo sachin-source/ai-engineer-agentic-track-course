@@ -80,3 +80,5 @@ response = send_message(Message(response.content), AgentId("LLMAgent", "default"
 # response = await runtime.send_message(Message(response.content), AgentId("LLMAgent", "default"))
 
 shutdown()
+
+from autogen_ext.models.ollama import OllamaChatCompletionClient
