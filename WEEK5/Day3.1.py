@@ -12,3 +12,8 @@ load_dotenv(override=True)
 @dataclass
 class Message:
     content: str
+
+class SimpleAgent(RoutedAgent):
+    def __init__(self) -> None:
+        super().__init__("Simple")
+
