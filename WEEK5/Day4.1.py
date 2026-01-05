@@ -84,7 +84,9 @@ class Judge(RoutedAgent):
 from autogen_ext.runtimes.grpc import GrpcWorkerAgentRuntime
 
 worker = None
-agent_id = AgentId("", "")
+worker1 = None
+worker2 = None
+agent_id = None
 
 async def register_and_start_agents():
     if ALL_IN_ONE_WORKER:
@@ -120,3 +122,12 @@ async def send_message():
 
 response = send_message()
 display(Markdown(response.content))
+
+async def shutdown():
+    await worker.stop()
+    if not ALL_IN_ONE_WORKER:
+        await worker1.stop()
+        await worker2.stop()
+        await host.stop()
+
+shutdown()
