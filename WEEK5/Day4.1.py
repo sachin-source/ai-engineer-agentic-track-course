@@ -21,4 +21,8 @@ class Message:
 from autogen_ext.runtimes.grpc import GrpcWorkerAgentRuntimeHost
 
 host = GrpcWorkerAgentRuntimeHost(address="localhost:50051")
-host.start() 
+host.start()
+
+serper = GoogleSerperAPIWrapper()
+langchain_serper =Tool(name="internet_search", func=serper.run, description="Useful for when you need to search the internet")
+autogen_serper = LangChainToolAdapter(langchain_serper)
