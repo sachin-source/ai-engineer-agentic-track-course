@@ -26,3 +26,13 @@ host.start()
 serper = GoogleSerperAPIWrapper()
 langchain_serper =Tool(name="internet_search", func=serper.run, description="Useful for when you need to search the internet")
 autogen_serper = LangChainToolAdapter(langchain_serper)
+
+instruction1 = "To help with a decision on whether to use AutoGen in a new AI Agent project, \
+please research and briefly respond with reasons in favor of choosing AutoGen; the pros of AutoGen."
+
+instruction2 = "To help with a decision on whether to use AutoGen in a new AI Agent project, \
+please research and briefly respond with reasons against choosing AutoGen; the cons of Autogen."
+
+judge = "You must make a decision on whether to use AutoGen for a project. \
+Your research team has come up with the following reasons for and against. \
+Based purely on the research from your team, please respond with your decision and brief rationale."
