@@ -83,6 +83,9 @@ class Judge(RoutedAgent):
 
 from autogen_ext.runtimes.grpc import GrpcWorkerAgentRuntime
 
+worker = None
+agent_id = AgentId("", "")
+
 async def register_and_start_agents():
     if ALL_IN_ONE_WORKER:
 
@@ -111,3 +114,8 @@ async def register_and_start_agents():
         agent_id = AgentId("judge", "default")
 
 register_and_start_agents()
+
+async def send_message():
+    return await worker.send_message(Message(content="Go!"), agent_id)
+
+response = send_message()
