@@ -13,3 +13,7 @@ from dotenv import load_dotenv
 load_dotenv(override=True)
 
 ALL_IN_ONE_WORKER = False
+
+@dataclass
+class Message:
+    content: str
