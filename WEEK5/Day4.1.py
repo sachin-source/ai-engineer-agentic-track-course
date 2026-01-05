@@ -48,3 +48,15 @@ class Player1Agent(RoutedAgent):
         text_message = TextMessage(content=message.content, source="user")
         response = await self._delegate.on_messages([text_message], ctx.cancellation_token)
         return Message(content=response.chat_message.content)
+
+class Player2Agent(RoutedAgent):
+    def __init__(self, name: str) -> None:
+        super().__init__(name)
+        model_client = OpenAIChatCompletionClient(model="gpt-4o-mini")
+        self._delegate = AssistantAgent(name, model_client=model_client, tools=[autogen_serper], reflect_on_tool_use=True)
+
+    @message_handler
+    async def handle_my_message_type(self, message: Message, ctx: MessageContext) -> Message:
+        text_message = TextMessage(content=message.content, source="user")
+        response = await self._delegate.on_messages([text_message], ctx.cancellation_token)
+        return Message(content=response.chat_message.content)
