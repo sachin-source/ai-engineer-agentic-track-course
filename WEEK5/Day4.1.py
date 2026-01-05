@@ -60,3 +60,23 @@ class Player2Agent(RoutedAgent):
         text_message = TextMessage(content=message.content, source="user")
         response = await self._delegate.on_messages([text_message], ctx.cancellation_token)
         return Message(content=response.chat_message.content)
+
+class Judge(RoutedAgent):
+    def __init__(self, name: str) -> None:
+        super().__init__(name)
+        model_client = OpenAIChatCompletionClient(model="gpt-4o-mini")
+        self._delegate = AssistantAgent(name, model_client=model_client)
+        
+    @message_handler
+    async def handle_my_message_type(self, message: Message, ctx: MessageContext) -> Message:
+        message1 = Message(content=instruction1)
+        message2 = Message(content=instruction2)
+        inner_1 = AgentId("player1", "default")
+        inner_2 = AgentId("player2", "default")
+        response1 = await self.send_message(message1, inner_1)
+        response2 = await self.send_message(message2, inner_2)
+        result = f"## Pros of AutoGen:\n{response1.content}\n\n## Cons of AutoGen:\n{response2.content}\n\n"
+        judgement = f"{judge}\n{result}Respond with your decision and brief explanation"
+        message = TextMessage(content=judgement, source="user")
+        response = await self._delegate.on_messages([message], ctx.cancellation_token)
+        return Message(content=result + "\n\n## Decision:\n\n" + response.chat_message.content)
