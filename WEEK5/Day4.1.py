@@ -17,3 +17,8 @@ ALL_IN_ONE_WORKER = False
 @dataclass
 class Message:
     content: str
+
+from autogen_ext.runtimes.grpc import GrpcWorkerAgentRuntimeHost
+
+host = GrpcWorkerAgentRuntimeHost(address="localhost:50051")
+host.start() 
