@@ -36,3 +36,15 @@ please research and briefly respond with reasons against choosing AutoGen; the c
 judge = "You must make a decision on whether to use AutoGen for a project. \
 Your research team has come up with the following reasons for and against. \
 Based purely on the research from your team, please respond with your decision and brief rationale."
+
+class Player1Agent(RoutedAgent):
+    def __init__(self, name: str) -> None:
+        super().__init__(name)
+        model_client = OpenAIChatCompletionClient(model="gpt-4o-mini")
+        self._delegate = AssistantAgent(name, model_client=model_client, tools=[autogen_serper], reflect_on_tool_use=True)
+
+    @message_handler
+    async def handle_my_message_type(self, message: Message, ctx: MessageContext) -> Message:
+        text_message = TextMessage(content=message.content, source="user")
+        response = await self._delegate.on_messages([text_message], ctx.cancellation_token)
+        return Message(content=response.chat_message.content)
