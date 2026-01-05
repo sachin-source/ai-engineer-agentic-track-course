@@ -119,3 +119,4 @@ async def send_message():
     return await worker.send_message(Message(content="Go!"), agent_id)
 
 response = send_message()
+display(Markdown(response.content))
