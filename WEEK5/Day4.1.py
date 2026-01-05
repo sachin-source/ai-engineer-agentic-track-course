@@ -95,4 +95,19 @@ async def register_and_start_agents():
 
         agent_id = AgentId("judge", "default")
 
+    else:
+
+        worker1 = GrpcWorkerAgentRuntime(host_address="localhost:50051")
+        await worker1.start()
+        await Player1Agent.register(worker1, "player1", lambda: Player1Agent("player1"))
+
+        worker2 = GrpcWorkerAgentRuntime(host_address="localhost:50051")
+        await worker2.start()
+        await Player2Agent.register(worker2, "player2", lambda: Player2Agent("player2"))
+
+        worker = GrpcWorkerAgentRuntime(host_address="localhost:50051")
+        await worker.start()
+        await Judge.register(worker, "judge", lambda: Judge("judge"))
+        agent_id = AgentId("judge", "default")
+
 register_and_start_agents()
