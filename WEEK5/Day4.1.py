@@ -80,3 +80,19 @@ class Judge(RoutedAgent):
         message = TextMessage(content=judgement, source="user")
         response = await self._delegate.on_messages([message], ctx.cancellation_token)
         return Message(content=result + "\n\n## Decision:\n\n" + response.chat_message.content)
+
+from autogen_ext.runtimes.grpc import GrpcWorkerAgentRuntime
+
+async def register_and_start_agents():
+    if ALL_IN_ONE_WORKER:
+
+        worker = GrpcWorkerAgentRuntime(host_address="localhost:50051")
+        await worker.start()
+
+        await Player1Agent.register(worker, "player1", lambda: Player1Agent("player1"))
+        await Player2Agent.register(worker, "player2", lambda: Player2Agent("player2"))
+        await Judge.register(worker, "judge", lambda: Judge("judge"))
+
+        agent_id = AgentId("judge", "default")
+
+register_and_start_agents()
