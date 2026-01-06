@@ -10,3 +10,9 @@ from autogen_core import AgentId
 from dotenv import load_dotenv
 
 load_dotenv(override=True)
+
+logging.basicConfig(level=logging.WARNING)
+logger = logging.getLogger(TRACE_LOGGER_NAME)
+logger.addHandler(logging.StreamHandler())
+logger.setLevel(logging.DEBUG)
+
