@@ -38,3 +38,13 @@ class Creator(RoutedAgent):
         super().__init__(name)
         model_client = OpenAIChatCompletionClient(model="gpt-4o-mini", temperature=1.0)
         self._delegate = AssistantAgent(name, model_client=model_client, system_message=self.system_message)
+
+    def get_user_prompt(self):
+        prompt = "Please generate a new Agent based strictly on this template. Stick to the class structure. \
+            Respond only with the python code, no other text, and no markdown code blocks.\n\n\
+            Be creative about taking the agent in a new direction, but don't change method signatures.\n\n\
+            Here is the template:\n\n"
+        with open("agent.py", "r", encoding="utf-8") as f:
+            template = f.read()
+        return prompt + template   
+        
