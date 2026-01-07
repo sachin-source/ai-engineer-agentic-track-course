@@ -6,3 +6,7 @@
 
 ## Notes
 - MCP servers most often run on your box - Download open-source MCP Servers, run them locally
+
+## Transport Mechanisms
+- STDIO : spawns a process and communicates via standard input/output
+- SSE : Server Sent Events - uses HTTPS connections with streaming
