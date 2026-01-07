@@ -14,3 +14,12 @@ async def mcp_fetch_tools():
         return await server.list_tools()
 
 fetch_tools = trace(mcp_fetch_tools)
+
+
+playwright_params = {"command": "npx","args": [ "@playwright/mcp@latest"]}
+
+async def mcp_playwright_tools():
+    async with MCPServerStdio(params=playwright_params, client_session_timeout_seconds=60) as server:
+        playwright_tools = await server.list_tools()
+
+playwright_tools = trace(mcp_playwright_tools)
