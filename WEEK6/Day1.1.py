@@ -4,3 +4,5 @@ from dotenv import load_dotenv
 from agents import Agent, Runner, trace
 from agents.mcp import MCPServerStdio
 import os
+
+load_dotenv(override=True)
