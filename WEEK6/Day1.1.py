@@ -20,6 +20,16 @@ playwright_params = {"command": "npx","args": [ "@playwright/mcp@latest"]}
 
 async def mcp_playwright_tools():
     async with MCPServerStdio(params=playwright_params, client_session_timeout_seconds=60) as server:
-        playwright_tools = await server.list_tools()
+        return await server.list_tools()
 
 playwright_tools = trace(mcp_playwright_tools)
+
+
+sandbox_path = os.path.abspath(os.path.join(os.getcwd(), "sandbox"))
+files_params = {"command": "npx", "args": ["-y", "@modelcontextprotocol/server-filesystem", sandbox_path]}
+
+async def mcp_file_tools():
+    async with MCPServerStdio(params=files_params,client_session_timeout_seconds=60) as server:
+        return await server.list_tools()
+
+file_tools = trace(mcp_file_tools)
