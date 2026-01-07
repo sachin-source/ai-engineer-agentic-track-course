@@ -10,3 +10,10 @@
 ## Transport Mechanisms
 - STDIO : spawns a process and communicates via standard input/output
 - SSE : Server Sent Events - uses HTTPS connections with streaming
+
+## MCP Market Place
+- https://mcp.so
+- https://glama.ai/mcp
+- https://smithery.ai
+- https://huggingface.co/blog/LLMhacker/top-11-essential-mcp-libraries
+- https://huggingface.co/blog/Kseniase/mcp
