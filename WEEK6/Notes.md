@@ -3,3 +3,6 @@
 - **Host** is an LLM app like claude or our Agent architecture
 - **MCP Client** lives inside Host and connects 1:1 to MCP Server
 - **MCP Server** provides tools, context and prompts
+
+## Notes
+- MCP servers most often run on your box - Download open-source MCP Servers, run them locally
