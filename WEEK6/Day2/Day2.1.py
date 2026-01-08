@@ -23,3 +23,7 @@ async def run_mcp_server():
         return await server.list_tools()
 
 mcp_tools = asyncio.run(run_mcp_server())
+
+instructions = "You are able to manage an account for a client, and answer questions about the account."
+request = "My name is Ed and my account is under the name Ed. What's my balance and my holdings?"
+model = "gpt-4.1-mini"
