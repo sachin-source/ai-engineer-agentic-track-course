@@ -6,3 +6,6 @@ from IPython.display import display, Markdown
 load_dotenv(override=True)
 
 from accounts import Account
+
+# account = Account.get("Ed")
+# account
