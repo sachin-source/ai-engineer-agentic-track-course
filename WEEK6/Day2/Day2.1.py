@@ -1,3 +1,4 @@
+import asyncio
 from dotenv import load_dotenv
 from agents import Agent, Runner, trace
 from agents.mcp import MCPServerStdio
@@ -13,3 +14,12 @@ from accounts import Account
 # account.buy_shares("AMZN", 3, "Because this bookstore website looks promising")
 # account.report()
 # account.list_transactions()
+
+# Now let's use our accounts server as an MCP server
+
+params = {"command": "uv", "args": ["run", "accounts_server.py"]}
+async def run_mcp_server():
+    async with MCPServerStdio(params=params, client_session_timeout_seconds=30) as server:
+        return await server.list_tools()
+
+mcp_tools = asyncio.run(run_mcp_server())
