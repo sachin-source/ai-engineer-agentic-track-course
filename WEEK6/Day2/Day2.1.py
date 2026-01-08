@@ -50,3 +50,13 @@ async def get_mcp_accounts_tools_openai():
 
 openai_tools = asyncio.run(get_mcp_accounts_tools_openai())
 print(openai_tools)
+
+request = "My name is Ed and my account is under the name Ed. What's my balance?"
+
+async def test_mcp_account_client():
+    with trace("account_mcp_client"):
+        agent = Agent(name="account_manager", instructions=instructions, model=model, tools=openai_tools)
+        result = await Runner.run(agent, request)
+        display(Markdown(result.final_output))
+
+asyncio.run(test_mcp_account_client())
