@@ -9,3 +9,7 @@ from accounts import Account
 
 # account = Account.get("Ed")
 # account
+
+# account.buy_shares("AMZN", 3, "Because this bookstore website looks promising")
+# account.report()
+# account.list_transactions()
