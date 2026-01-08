@@ -36,3 +36,17 @@ async def async_mcp_account_manager():
         display(Markdown(result.final_output))
 
 asyncio.run(async_mcp_account_manager())
+
+from accounts_client import get_accounts_tools_openai, read_accounts_resource, list_accounts_tools
+
+async def read_mcp_accounts_resource():
+    return await read_accounts_resource()
+
+mcp_tools = asyncio.run(read_mcp_accounts_resource())
+print(mcp_tools)
+
+async def get_mcp_accounts_tools_openai():
+    return await get_accounts_tools_openai()
+
+openai_tools = asyncio.run(get_mcp_accounts_tools_openai())
+print(openai_tools)
