@@ -60,3 +60,9 @@ async def test_mcp_account_client():
         display(Markdown(result.final_output))
 
 asyncio.run(test_mcp_account_client())
+
+async def read_ed_account():
+    return await read_accounts_resource("ed")
+
+context = asyncio.run(read_ed_account())
+print(context)
