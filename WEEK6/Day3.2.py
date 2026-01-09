@@ -32,3 +32,9 @@ asyncio.run(test_mcp_agent())
 
 from market import get_share_price
 # get_share_price("AAPL")
+
+# no rate limiting concerns!
+
+for i in range(1000):
+    get_share_price("AAPL")
+get_share_price("AAPL")
