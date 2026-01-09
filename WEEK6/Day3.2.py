@@ -38,3 +38,9 @@ from market import get_share_price
 for i in range(1000):
     get_share_price("AAPL")
 get_share_price("AAPL")
+
+params = {"command": "uv", "args": ["run", "market_server.py"]}
+async def market_as_tool():
+    async with MCPServerStdio(params=params, client_session_timeout_seconds=60) as server:
+        return await server.list_tools()
+mcp_tools = asyncio.run(market_as_tool())
