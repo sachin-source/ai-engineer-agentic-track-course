@@ -29,3 +29,6 @@ async def test_mcp_agent():
         display(Markdown(result.final_output))
 
 asyncio.run(test_mcp_agent())
+
+from market import get_share_price
+# get_share_price("AAPL")
