@@ -15,3 +15,8 @@ async def test_mcp():
         return await server.list_tools()
 
 mcp_tools = asyncio.run(test_mcp())
+
+instructions = "You are able to search the web for information and briefly summarize the takeaways."
+request = f"Please research the latest news on Amazon stock price and briefly summarize its outlook. \
+For context, the current date is {datetime.now().strftime('%Y-%m-%d')}"
+model = "gpt-4o-mini"
