@@ -35,12 +35,24 @@ from market import get_share_price
 
 # no rate limiting concerns!
 
-for i in range(1000):
-    get_share_price("AAPL")
-get_share_price("AAPL")
+# for i in range(1000):
+#     get_share_price("AAPL")
+# get_share_price("AAPL")
 
 params = {"command": "uv", "args": ["run", "market_server.py"]}
 async def market_as_tool():
     async with MCPServerStdio(params=params, client_session_timeout_seconds=60) as server:
         return await server.list_tools()
-mcp_tools = asyncio.run(market_as_tool())
+# mcp_tools = asyncio.run(market_as_tool())
+
+instructions = "You answer questions about the stock market."
+request = "What's the share price of Apple?"
+model = "gpt-4.1-mini"
+
+async def market_free_as_agent():
+    async with MCPServerStdio(params=params, client_session_timeout_seconds=60) as mcp_server:
+        agent = Agent(name="agent", instructions=instructions, model=model, mcp_servers=[mcp_server])
+        with trace("conversation"):
+            result = await Runner.run(agent, request)
+        display(Markdown(result.final_output))
+asyncio.run(market_free_as_agent())
