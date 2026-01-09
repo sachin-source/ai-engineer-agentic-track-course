@@ -26,3 +26,12 @@ async def mcp_with_agent():
         with trace("conversation"):
             result = await Runner.run(agent, request)
         display(Markdown(result.final_output))
+# asyncio.run(mcp_with_agent())
+
+async def mcp_with_agent_and_time():
+    async with MCPServerStdio(params=params, client_session_timeout_seconds=30) as mcp_server:
+        agent = Agent(name="agent", instructions=instructions, model=model, mcp_servers=[mcp_server])
+        with trace("conversation"):
+            result = await Runner.run(agent, "My name's Ed. What do you know about me?")
+        display(Markdown(result.final_output))
+# asyncio.run(mcp_with_agent_and_time())
