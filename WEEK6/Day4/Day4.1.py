@@ -6,6 +6,7 @@ from IPython.display import Markdown, display
 from datetime import datetime
 from accounts_client import read_accounts_resource, read_strategy_resource
 from accounts import Account
+import asyncio
 
 load_dotenv(override=True)
 
@@ -65,3 +66,15 @@ async def get_researcher_tool(mcp_servers) -> Tool:
                 or generally for notable financial news and opportunities. \
                 Describe what kind of research you're looking for."
         )
+
+async def test_mcp_connection():
+    research_question = "What's the latest news on Amazon?"
+
+    for server in researcher_mcp_servers:
+        await server.connect()
+    researcher = await get_researcher(researcher_mcp_servers)
+    with trace("Researcher"):
+        result = await Runner.run(researcher, research_question, max_turns=30)
+    display(Markdown(result.final_output))
+
+asyncio.run(test_mcp_connection())
