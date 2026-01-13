@@ -17,3 +17,14 @@ is_realtime_polygon = polygon_plan == "realtime"
 
 print(is_paid_polygon)
 print(is_realtime_polygon)
+
+if is_paid_polygon or is_realtime_polygon:
+    market_mcp = {"command": "uvx","args": ["--from", "git+https://github.com/polygon-io/mcp_polygon@master", "mcp_polygon"], "env": {"POLYGON_API_KEY": polygon_api_key}}
+else:
+    market_mcp = ({"command": "uv", "args": ["run", "market_server.py"]})
+
+trader_mcp_server_params = [
+    {"command": "uv", "args": ["run", "accounts_server.py"]},
+    {"command": "uv", "args": ["run", "push_server.py"]},
+    market_mcp
+]
