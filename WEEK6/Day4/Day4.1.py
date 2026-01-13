@@ -28,3 +28,10 @@ trader_mcp_server_params = [
     {"command": "uv", "args": ["run", "push_server.py"]},
     market_mcp
 ]
+
+brave_env = {"BRAVE_API_KEY": os.getenv("BRAVE_API_KEY")}
+
+researcher_mcp_server_params = [
+    {"command": "uvx", "args": ["mcp-server-fetch"]},
+    {"command": "npx", "args": ["-y", "@modelcontextprotocol/server-brave-search"], "env": brave_env}
+]
