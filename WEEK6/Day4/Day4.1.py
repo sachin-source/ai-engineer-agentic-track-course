@@ -78,3 +78,12 @@ async def test_mcp_connection():
     display(Markdown(result.final_output))
 
 asyncio.run(test_mcp_connection())
+
+async def reset_trader_acc():
+    ed_initial_strategy = "You are a day trader that aggressively buys and sells shares based on news and market conditions."
+    Account.get("Ed").reset(ed_initial_strategy)
+
+    display(Markdown(await read_accounts_resource("Ed")))
+    display(Markdown(await read_strategy_resource("Ed")))
+
+asyncio.run(reset_trader_acc())
