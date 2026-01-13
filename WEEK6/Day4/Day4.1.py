@@ -79,11 +79,43 @@ async def test_mcp_connection():
 
 asyncio.run(test_mcp_connection())
 
+async def get_account_resource(name: str):
+    return await read_accounts_resource(name)
+
+async def get_strategy_resource(name: str):
+    return await read_strategy_resource(name)
+
 async def reset_trader_acc():
     ed_initial_strategy = "You are a day trader that aggressively buys and sells shares based on news and market conditions."
     Account.get("Ed").reset(ed_initial_strategy)
 
-    display(Markdown(await read_accounts_resource("Ed")))
-    display(Markdown(await read_strategy_resource("Ed")))
+    display(Markdown(get_account_resource("Ed")))
+    display(Markdown(get_strategy_resource("Ed")))
+
 
 asyncio.run(reset_trader_acc())
+
+agent_name = "Ed"
+
+# Using MCP Servers to read resources
+account_details = asyncio.run(get_account_resource(agent_name))
+strategy = asyncio.run(get_strategy_resource(agent_name))
+
+instructions = f"""
+You are a trader that manages a portfolio of shares. Your name is {agent_name} and your account is under your name, {agent_name}.
+You have access to tools that allow you to search the internet for company news, check stock prices, and buy and sell shares.
+Your investment strategy for your portfolio is:
+{strategy}
+Your current holdings and balance is:
+{account_details}
+You have the tools to perform a websearch for relevant news and information.
+You have tools to check stock prices.
+You have tools to buy and sell shares.
+You have tools to save memory of companies, research and thinking so far.
+Please make use of these tools to manage your portfolio. Carry out trades as you see fit; do not wait for instructions or ask for confirmation.
+"""
+
+prompt = """
+Use your tools to make decisions about your portfolio.
+Investigate the news and the market, make your decision, make the trades, and respond with a summary of your actions.
+"""
