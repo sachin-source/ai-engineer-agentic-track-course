@@ -119,3 +119,5 @@ prompt = """
 Use your tools to make decisions about your portfolio.
 Investigate the news and the market, make your decision, make the trades, and respond with a summary of your actions.
 """
+
+# print(instructions)
