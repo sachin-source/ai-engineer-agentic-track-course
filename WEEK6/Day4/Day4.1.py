@@ -139,3 +139,7 @@ async def run_trader_with_mcp():
     display(Markdown(result.final_output))
 
 asyncio.run(run_trader_with_mcp())
+
+# And let's look at the results of the trading
+async def read_acc_resource():
+    await read_accounts_resource(agent_name)
