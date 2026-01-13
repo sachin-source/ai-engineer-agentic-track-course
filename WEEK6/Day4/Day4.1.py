@@ -121,3 +121,21 @@ Investigate the news and the market, make your decision, make the trades, and re
 """
 
 # print(instructions)
+
+async def run_trader_with_mcp():
+    for server in mcp_servers:
+        await server.connect()
+
+    researcher_tool = await get_researcher_tool(researcher_mcp_servers)
+    trader = Agent(
+        name=agent_name,
+        instructions=instructions,
+        tools=[researcher_tool],
+        mcp_servers=trader_mcp_servers,
+        model="gpt-4o-mini",
+    )
+    with trace(agent_name):
+        result = await Runner.run(trader, prompt, max_turns=30)
+    display(Markdown(result.final_output))
+
+asyncio.run(run_trader_with_mcp())
