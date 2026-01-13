@@ -39,3 +39,19 @@ researcher_mcp_server_params = [
 researcher_mcp_servers = [MCPServerStdio(params, client_session_timeout_seconds=30) for params in researcher_mcp_server_params]
 trader_mcp_servers = [MCPServerStdio(params, client_session_timeout_seconds=30) for params in trader_mcp_server_params]
 mcp_servers = trader_mcp_servers + researcher_mcp_servers
+
+async def get_researcher(mcp_servers) -> Agent:
+    instructions = f"""You are a financial researcher. You are able to search the web for interesting financial news,
+look for possible trading opportunities, and help with research.
+Based on the request, you carry out necessary research and respond with your findings.
+Take time to make multiple searches to get a comprehensive overview, and then summarize your findings.
+If there isn't a specific request, then just respond with investment opportunities based on searching latest news.
+The current datetime is {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
+"""
+    researcher = Agent(
+        name="Researcher",
+        instructions=instructions,
+        model="gpt-4.1-mini",
+        mcp_servers=mcp_servers,
+    )
+    return researcher
