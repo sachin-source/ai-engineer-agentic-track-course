@@ -35,3 +35,7 @@ researcher_mcp_server_params = [
     {"command": "uvx", "args": ["mcp-server-fetch"]},
     {"command": "npx", "args": ["-y", "@modelcontextprotocol/server-brave-search"], "env": brave_env}
 ]
+
+researcher_mcp_servers = [MCPServerStdio(params, client_session_timeout_seconds=30) for params in researcher_mcp_server_params]
+trader_mcp_servers = [MCPServerStdio(params, client_session_timeout_seconds=30) for params in trader_mcp_server_params]
+mcp_servers = trader_mcp_servers + researcher_mcp_servers
