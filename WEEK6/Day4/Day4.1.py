@@ -55,3 +55,13 @@ The current datetime is {datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
         mcp_servers=mcp_servers,
     )
     return researcher
+
+async def get_researcher_tool(mcp_servers) -> Tool:
+    researcher = await get_researcher(mcp_servers)
+    return researcher.as_tool(
+            tool_name="Researcher",
+            tool_description="This tool researches online for news and opportunities, \
+                either based on your specific request to look into a certain stock, \
+                or generally for notable financial news and opportunities. \
+                Describe what kind of research you're looking for."
+        )
